@@ -169,3 +169,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+# exclude all data
+*.nc
+
+# exclude all figures
+*.png
+*.jepg
+*.pdf
+*.eps
