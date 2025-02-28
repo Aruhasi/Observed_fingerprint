@@ -15,17 +15,12 @@ The scripts used preprocessed large ensemble climate data which can be downloade
 ```
 - Run individual scripts for figures
 ```
-├── Figure1             # first level is the name for the model / reanalysis
+├── Figure1
+|   ├──Figure1_HadCRUT5_GSAT_trend_95%_Plotting.ipynb        
 ├── Figure2
-└── Figure3       # some pre-processing codes that apply to all models
-```
-
-## 3. Enviornment requirements
-The code has been tested on Linux system. 
-
-`enviroment.yml` provides a list of python dependences. 
-an environment can be created by following code:
-```bash
-conda env create -f environment.yml
-conda activate mykernel
+|   ├──Figure2.py
+|── Figure3
+|   ├──Figure3_plotting.py
+|── Figure4
+|   ├──Figure4_plotting.py
 ```
