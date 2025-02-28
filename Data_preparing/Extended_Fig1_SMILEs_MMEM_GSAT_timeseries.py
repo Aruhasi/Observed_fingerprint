@@ -24,7 +24,7 @@ client, scluster = scluster.init_dask_slurm_cluster()
 # In[2]:
 # DIRECTORIES
 # Path to input files
-# HadCRUT5_dir    = '/work/mh0033/m301036/Data_storage/Data/Regrid/'
+HadCRUT5_dir    = '/work/mh0033/m301036/Data_storage/Data/Regrid/'
 CanESM5_dir     = '/work/mh0033/m301036/Data_storage/CMIP6-CanESM5/MergeOut/ssp245/'
 IPSL_dir        = '/work/mh0033/m301036/Data_storage/CMIP6-IPSL-CM6A-LR/Rawdata/regrid/'
 EC_Earth_dir    = '/work/mh0033/m301036/Data_storage/CMIP6-EC-Earth/MergeOut/ssp245/'
@@ -34,7 +34,7 @@ MIROC6_dir      = '/work/mh0033/m301036/Data_storage/CMIP6-MIROC/MergeOut/ssp245
 # Path to output files
 # In[3]:
 # read in the data
-# ds_HadCRUT5 = xr.open_dataset(HadCRUT5_dir + 'tas_HadCRUT5_regrid.nc').tas_mean
+ds_HadCRUT5 = xr.open_dataset(HadCRUT5_dir + 'tas_HadCRUT5_regrid.nc').tas_mean
 
 ds_CanESM5  = xr.open_mfdataset(CanESM5_dir + 'tas_Amon_1850-2022_*.nc', combine='nested', concat_dim='run').tas
 ds_IPSL     = xr.open_mfdataset(IPSL_dir + 'tas_Amon_1850-2022_*.nc', combine='nested', concat_dim='run').tas
@@ -67,7 +67,7 @@ ds_MPI_ESM_ano   = data_process.calc_anom_1961_1990(ds_MPI_ESM_1850_2022)
 ds_MIROC6_ano    = data_process.calc_anom_1961_1990(ds_MIROC6_1850_2022)
 # In[5]:
 # annual mean
-ds_HadCRUT5_annual_mean  = ds_HadCRUT5_ano.groupby('time.year').mean(dim='time')
+ds_HadCRUT5_annual_mean  = ds_HadCRUT5.groupby('time.year').mean(dim='time')
 ds_CanESM5_annual_mean   = ds_CanESM5_ano.groupby('time.year').mean(dim='time')
 ds_IPSL_annual_mean      = ds_IPSL_ano.groupby('time.year').mean(dim='time')
 ds_EC_Earth_annual_mean  = ds_EC_Earth_ano.groupby('time.year').mean(dim='time')

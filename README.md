@@ -1,31 +1,23 @@
 # Observed fingerprint of global warming
 This repository contains all codes which are used to producing the whole figures contained in this paper.
 ## 1. Data preprocessing
-All the adopted data in this study are publicly available. HadCRUT5 near surface temperature data version 5.0.1.0: \url{https://www.metoffice.gov.uk/hadobs/hadcrut5/data/current/download.html};
-The CMIP6 data are freely available at ESGF \url{https://aims2.llnl.gov/projects/cmip6/}.
+The scripts used preprocessed large ensemble climate data which can be downloaded from https://aims2.llnl.gov/projects/cmip6/. The observational dataset can be downloaded at HadCRUT5: https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.0.2.0/download.html, Berkeley Earth Surface temperature data: https://berkeleyearth.org/data/, NOAAGlobalTemp data:https://www.ncei.noaa.gov/products/land-based-station/noaa-global-temp.
 
-## 2. Code structure
-
+## 2. Method:
+------
+- All datasets were interpolated onto 2 x 2 global grid using the bilinear interpolation method of Climate Data Operator (CDO)
+- Run *src* to store calculations of trends for the various time segments (from 10 to 73 years in observations and models) and their trend significance test.
 ```
-├── CanESM2             # first level is the name for the model / reanalysis
-├── CESM1_CAM5
-├── CR20
-├── CR20_allens
-├── ERA5
-├── ERA5_allens
-├── GFDL_CM3
-├── MK36
-├── MPI_GE
-├── MPI_GE_onepct
-│   ├── codes           # second level contains the pre-processing codes \n
-│   ├── composite       # some results such as composite analysis
-│   ├── EOF_result      # EOF analysis results
-│   ├── zg              # variables such as 'zg', 'ts'
-│   ├── zg_Aug          # also variables that are separated by months
-│   ├── zg_Jul
-│   ├── zg_Jun
-│   ├── ts  
-└── zodes_for_all       # some pre-processing codes that apply to all models
+├── Data_preparing             # annual mean SAT anomalies, GSAT timeseries, observed trend pattern calculations
+├── src
+│   ├── Data_Preoricess.py         # second level contains the pre-processing codes \n
+│   ├── SAT_function.py       # store the defined subfunction for calculation inbetween main script 
+```
+- Run individual scripts for figures
+```
+├── Figure1             # first level is the name for the model / reanalysis
+├── Figure2
+└── Figure3       # some pre-processing codes that apply to all models
 ```
 
 ## 3. Enviornment requirements
