@@ -169,8 +169,7 @@ levels_diff = np.arange(-25, 30, 5)  # Extend to 40 for the upper bound
 cmap_diff = plt.get_cmap(cmap_diff)
 colors_diff = cmap_diff(np.linspace(0, 1, len(levels_diff)+1))
 
-# Add extra colors for extensions
-# colors_diff = np.vstack([colors_diff, [1, 1, 1, 1]])  # Add gray (min) and grey (max)
+
 custom_cmap_diff = ListedColormap(colors_diff)
 
 # Ensure BoundaryNorm matches the extended levels
