@@ -21,7 +21,6 @@ The code is designed to run on a **Linux system** using a **Conda environment**.
     conda activate mykernel
     ```
     Note:
-    - Replace mykernel with the actual name specified in the environment.yml file if it's different.
     - Ensure that Conda is properly installed on your system.
     - If any issues arise, verify the Python version and dependencies listed in environment.yml.
 ---
@@ -42,36 +41,24 @@ The observational datasets are accessible from:
 ### Preprocessing and Subfunctions
 
 - All datasets were interpolated onto a **2° x 2° global grid** using the **bilinear interpolation** method via **Climate Data Operators (CDO)**.
-
-- The `src` directory contains scripts for key computational processes used by the main code. For example:
-
-  - **Trend Calculation:** The subordinate function `src/SAT_function/calculate_trend_ols` calculates trends across different time segments, ranging from **10 to 73 years** in both observational datasets and model simulations.  
-  - **Significance Testing:** The script `src/SAT_function/apply_mannkendall` applies the Mann-Kendall test to assess trend significance.
-
+- Key functions in the src directory:
+    - calculate_trend_ols: Computes trends over segments of 10-73 years.
+    - apply_mannkendall: Conducts Mann-Kendall significance testing.
 ---
 
 ## 3. Code Structure 
 
-- **project-root/**
 ```
-│ ├── src/ # Source code for data processing 
-    ├── Data_Preprocess.py    # Pre-processing function used in the main code
-│   ├── SAT_function.py       # subordinate functions used in the main code
-├── data/                     # Directory for Demo input datasets
-├── Data_preparing/           # Annual mean SAT anomalies, GSAT timeseries in observation and simulations, and observed trend pattern calculations
-```
-- **Run individual scripts to generate specific figures:**
-```
-├── Figure1/
-|   ├──Figure1_HadCRUT5_GSAT_trend_95%_Plotting.ipynb        
-├── Figure2/
-|   ├──Figure2.py
-|── Figure3/
-|   ├──Figure3_plotting.py
-|── Figure4/
-|   ├──Figure4_plotting.py
-├── Extended_Figs/
-    ├──Extended_Fig**.py or .ipynb for plotting
+├── src/                     # Source code
+│   ├── Data_Preprocess.py   # Pre-processing functions
+│   ├── SAT_function.py      # Subordinate functions
+├── data/                    # Demo input datasets
+├── Data_preparing/          # Annual mean SAT anomalies, GSAT timeseries, trend calculations
+├── Figure1/                 # Scripts for Figure 1
+├── Figure2/                 # Scripts for Figure 2
+├── Figure3/                 # Scripts for Figure 3
+├── Figure4/                 # Scripts for Figure 4
+└── Extended_Figs/           # Scripts for extended figures
 ```
 ---
 ## 4. How to Run
@@ -97,7 +84,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 ---
 ### **Step-by-Step Example: Generating Figure 1**
 
-#### **Step 1: Separate Human-Forced and Internal Variability Trends**  
+1. Separate Human-Forced and Internal Variability Trends**  
 - Navigate to the following Jupyter notebook:  
   `Observed_fingerprint/Data_preparing/HadCRUT5_GSAT_forced_unforced_trend_separation_Beta_Alpha.ipynb`
 
@@ -113,7 +100,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-#### **Step 2: Calculate Segmented Trend Patterns**  
+2. Calculate Segmented Trend Patterns**  
 - Navigate to:  
   `/Figure1/HadCRUT5_GSAT_forced_unforced_trend_pattern.ipynb`
 
@@ -136,7 +123,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-#### **Step 3: Plot the Final Figure**  
+3. Plot the Final Figure**  
 - Navigate to:  
   `/Figure1/Figure1_HadCRUT5_GSAT_trend_95%_Plotting.ipynb`
 
@@ -159,11 +146,11 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
    - For instance, a **73-year trend** calculation runs significantly faster than 10-year segments for constructing internal variability distribution.  
    - Optimal settings can be adjusted in the relevant scripts to balance speed and memory usage.
 
-- **Key Notes**  
+- *Tips*: 
     - Ensure that all datasets are correctly preprocessed and located in the specified directories.  
     - It's recommended to run the notebooks **step by step** and verify outputs before proceeding to the next stage.  
     - If you encounter memory issues, consider reducing the chunk size or optimizing data processing steps.
 
 ---
 ## 5. Contact
-For any questions, please contact Hasi Aru (mailto:josie.aruhasi@mpimet.mpg.de).
+For inquiries, contact Hasi Aru at josie.aruhasi@mpimet.mpg.de.
