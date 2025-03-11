@@ -1,4 +1,4 @@
-name: mykernel
+v-listname: mykernel
 channels:
   - conda-forge
 dependencies:
