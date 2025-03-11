@@ -55,13 +55,10 @@ The observational datasets are accessible from:
 - **project-root/**
 ```
 │ ├── src/ # Source code for data processing 
-    ├── Data_Preoricess.py    # Pre-processing function used in the main code
+    ├── Data_Preprocess.py    # Pre-processing function used in the main code
 │   ├── SAT_function.py       # subordinate functions used in the main code
-├── data/     # Directory for Demo input datasets
-└── README.md # Project overview and setup instruction
-├── Data_preparing            # Annual mean SAT anomalies, GSAT timeseries in observation and simulations, and observed trend pattern calculations
-├── src
-
+├── data/                     # Directory for Demo input datasets
+├── Data_preparing/           # Annual mean SAT anomalies, GSAT timeseries in observation and simulations, and observed trend pattern calculations
 ```
 - **Run individual scripts to generate specific figures:**
 ```
@@ -75,7 +72,6 @@ The observational datasets are accessible from:
 |   ├──Figure4_plotting.py
 ├── Extended_Figs/
     ├──Extended_Fig**.py or .ipynb for plotting
-
 ```
 ---
 ## 4. How to run
