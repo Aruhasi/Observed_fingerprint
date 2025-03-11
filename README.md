@@ -113,7 +113,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-#### 📂 **Step 2: Calculate Segmented Trend Patterns**  
+#### **Step 2: Calculate Segmented Trend Patterns**  
 - Navigate to:  
   `/Figure1/HadCRUT5_GSAT_forced_unforced_trend_pattern.ipynb`
 
@@ -136,7 +136,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-#### 📂 **Step 3: Plot the Final Figure**  
+#### **Step 3: Plot the Final Figure**  
 - Navigate to:  
   `/Figure1/Figure1_HadCRUT5_GSAT_trend_95%_Plotting.ipynb`
 
@@ -156,15 +156,13 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 - The total processing time depends on the following factors:  
    - **Chunk Size:** Larger chunks may increase processing speed but require more memory.  
    - **Running Window:** The time complexity increases with longer trend lengths.  
-   - For instance, a **10-year trend** calculation runs significantly faster than longer segments (e.g., 73 years).  
+   - For instance, a **73-year trend** calculation runs significantly faster than 10-year segments for constructing internal variability distribution.  
    - Optimal settings can be adjusted in the relevant scripts to balance speed and memory usage.
 
----
-
-### **Key Notes**  
-- Ensure that all datasets are correctly preprocessed and located in the specified directories.  
-- It's recommended to run the notebooks **step by step** and verify outputs before proceeding to the next stage.  
-- If you encounter memory issues, consider reducing the chunk size or optimizing data processing steps.
+- **Key Notes**  
+    - Ensure that all datasets are correctly preprocessed and located in the specified directories.  
+    - It's recommended to run the notebooks **step by step** and verify outputs before proceeding to the next stage.  
+    - If you encounter memory issues, consider reducing the chunk size or optimizing data processing steps.
 
 ---
 ## 5. Contact
