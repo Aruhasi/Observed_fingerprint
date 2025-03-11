@@ -84,7 +84,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 ---
 ### **Step-by-Step Example: Generating Figure 1**
 
-1. Separate Human-Forced and Internal Variability Trends**  
+1. Separate Human-Forced and Internal Variability Trends  
 - Navigate to the following Jupyter notebook:  
   `Observed_fingerprint/Data_preparing/HadCRUT5_GSAT_forced_unforced_trend_separation_Beta_Alpha.ipynb`
 
@@ -100,7 +100,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-2. Calculate Segmented Trend Patterns**  
+2. Calculate Segmented Trend Patterns  
 - Navigate to:  
   `/Figure1/HadCRUT5_GSAT_forced_unforced_trend_pattern.ipynb`
 
@@ -123,7 +123,7 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 ---
 
-3. Plot the Final Figure**  
+3. Plot the Final Figure 
 - Navigate to:  
   `/Figure1/Figure1_HadCRUT5_GSAT_trend_95%_Plotting.ipynb`
 
