@@ -96,8 +96,6 @@ def calc_weighted_mean(data):
 
     data_weighted_mean = (data.weighted(weights)).mean(('lat', 'lon'))
     return data_weighted_mean
-
-
 # =============================================================================
 def lag1_acf(x, nlags=1):
     """
@@ -167,35 +165,7 @@ def interpolate_nan_1D(data):
     
     interpolated_data = np.interp(times, times[valid_mask], data[valid_mask])
     return interpolated_data
-
-# def apply_mannkendall_3D_interpolated(data):
-#     """
-#     Apply the Mann-Kendall test to a 3D dataset after interpolating NaN values.
-#     """
-#     # Derive the lat_length and lon_length from the data's shape
-#     _, lat_length, lon_length = data.shape
-    
-#     # Initialize the output arrays
-#     p_values = np.empty((lat_length, lon_length))
-#     slope_values = np.empty((lat_length, lon_length))
-    
-#     # Loop over the latitudes and longitudes
-#     for lat_idx in range(lat_length):
-#         for lon_idx in range(lon_length):
-#             # Select the data at the current latitude and longitude
-#             data_lat_lon = data[:, lat_idx, lon_idx]
-            
-#             # Interpolate NaN values
-#             data_lat_lon_interpolated = interpolate_nan_1D(data_lat_lon)
-            
-#             # Apply the Mann-Kendall test
-#             result = mk.original_test(data_lat_lon_interpolated, alpha=0.05)
-#             p_values[lat_idx, lon_idx] = result[2]
-#             slope_values[lat_idx, lon_idx] = result[7]
-            
-#     return slope_values, p_values
 # =============================================================================
-# define one dimension mann-kendall test
 def apply_mannkendall(data):
     # Remove NaN values and check for sufficient data points
     valid_data = data[~np.isnan(data)]
@@ -206,28 +176,6 @@ def apply_mannkendall(data):
     # Perform the Mann-Kendall test
     trend, h, p, z, Tau, s, var_s, slope, intercept = mk.original_test(valid_data, alpha=0.05)
     return slope, p
-    
-def apply_mannkendall_3D(data):
-    """
-    Apply the Mann-Kendall test to a 3D dataset.
-    """
-    # Initialize the output arrays
-    _, lat_length, lon_length = data.shape
-    p_values = np.empty((lat_length, lon_length))
-    slope_values = np.empty((lat_length, lon_length))
-    # data = preprocess_nan(data)
-    # Loop over the latitudes and longitudes
-    for lat_idx in range(lat_length):
-        for lon_idx in range(lon_length):
-            # Select the data at the current latitude and longitude
-            data_lat_lon = data[:, lat_idx, lon_idx]
-            
-            # Apply the Mann-Kendall test
-            p_values[lat_idx, lon_idx] = mk.original_test(data_lat_lon, alpha=0.05)[2]
-           
-            slope_values[lat_idx, lon_idx] = mk.original_test(data_lat_lon, alpha=0.05)[7]
-           
-    return slope_values, p_values
 # =============================================================================
 def generate_segments(data, segment_length):
     """
@@ -324,6 +272,7 @@ Return the regression slopes and p-values
 """
 import numpy as np
 from scipy.stats import linregress
+from scipy.stats import t
 
 def linear_regression_gmst(gmst, sat):
     """
@@ -361,80 +310,6 @@ def linear_regression_gmst(gmst, sat):
     intercepts = regression_results[1].reshape(lat, lon)
 
     return slopes, intercepts
-
-# =============================================================================
-"""
-Based on the function from linear_regression_gmst_vectorized
-Reconstruct the observed SAT anomalous pattern using linear regression coefficients.
-Gaining the reconstructed SAT pattern, residuals, and standard error of the regression slope
-
-"""
-def reconstruct_observed_sat_vectorized(gmst,var):
-    """
-    Reconstruct the observed SAT anomalous pattern using linear regression coefficients.
-
-    Parameters:
-    - var: The variable to be reconstructed (e.g., SAT, precipitation, etc.)
-    - slope: The regression slope obtained from linear regression.
-    - intercept: The regression intercept obtained from linear regression.
-    - gmst: 1D numpy array of GMST time series.
-
-    Returns:
-    - reconstructed_sat: 3D numpy array of the reconstructed SAT anomalous pattern.
-    - residuals: 3D numpy array of the residuals.
-    """
-    slope, intercept = linear_regression_gmst(gmst, var)
-    gmst_expanded = gmst[:, np.newaxis, np.newaxis]
-    reconstructed_sat = slope * gmst_expanded + intercept
-    residuals = var - reconstructed_sat
-    
-    # # Calculate standard error of the regression slope
-    # gmst_centered = gmst - gmst.mean()
-    # stderr = np.sqrt((residuals**2).sum() / (len(gmst) - 2)) / np.sqrt((gmst_centered**2).sum())
-    
-    return reconstructed_sat, residuals
-# =============================================================================
-from scipy.stats import t
-
-def linear_regression_gmst_vectorized(gmst, sat):
-    """
-    Perform linear regression of a GMST time series onto the Observed SAT spatial pattern.
-
-    Parameters:
-    - gmst: 1D numpy array of GMST time series
-    - sat: 3D numpy array of Observed SAT spatial pattern with dimensions (time, lat, lon)
-
-    Returns:
-    - slopes: 2D numpy array with dimensions (lat, lon) containing regression slopes
-    - p_values: 2D numpy array with dimensions (lat, lon) containing p-values for significance
-    """
-    time, lat, lon = sat.shape
-    assert len(gmst) == time, "GMST and SAT time dimensions must match!"
-
-    # Add a constant to gmst for intercept in regression
-    A = np.vstack([gmst, np.ones(time)]).T
-    
-    # Calculate regression coefficients (slope, intercept)
-    # This will give us an array of shape (2, lat, lon) where the first row is the slopes and the second row is the intercepts
-    coefficients = np.linalg.lstsq(A, sat, rcond=None)[0]
-    
-    # Extract the slopes (0th row of coefficients)
-    slopes = coefficients[0]
-    
-    # Calculate residuals
-    residuals = sat - slopes[None, :, :] * gmst[:, None, None]
-    
-    # Calculate standard error of the regression slope
-    gmst_centered = gmst - gmst.mean()
-    stderr = np.sqrt((residuals**2).sum(axis=0) / (time - 2)) / np.sqrt((gmst_centered**2).sum())
-    
-    # Calculate t-value
-    t_values = slopes / stderr
-    
-    # Calculate two-tailed p-value
-    p_values = 2 * (1 - t.cdf(np.abs(t_values), time - 2))
-    
-    return slopes, p_values
 
 # =============================================================================
 """
