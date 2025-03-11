@@ -98,7 +98,6 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 - **Expected Output:**  
    - Processed datasets containing human-forced and internal variability SAT anomalies.
 
----
 
 2. Calculate Segmented Trend Patterns  
 - Navigate to:  
@@ -120,8 +119,6 @@ To reproduce the analysis, it's strongly recommended to use the **same environme
 
 - **Expected Output:**  
    - Defined trend length patterns for both forced and unforced SAT anomalies.
-
----
 
 3. Plot the Final Figure 
 - Navigate to:  
