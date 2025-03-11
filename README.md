@@ -20,10 +20,10 @@ The code is designed to run on a **Linux system** using a **Conda environment**.
     ```bash
     conda activate mykernel
     ```
-Note:
--Replace mykernel with the actual name specified in the environment.yml file if it's different.
--Ensure that Conda is properly installed on your system.
--If any issues arise, verify the Python version and dependencies listed in environment.yml.
+    Note:
+    - Replace mykernel with the actual name specified in the environment.yml file if it's different.
+    - Ensure that Conda is properly installed on your system.
+    - If any issues arise, verify the Python version and dependencies listed in environment.yml.
 ---
 ## 2. Data Preparation and Preprocessing
 
