@@ -3,14 +3,23 @@
 """
 Created on Fri Sept 15, 2023
 __author__ = "Dr. Josie Aruhasi"
-This script contains the functions used in the NHLSAT analysis.
+This script contains the functions used in the Observed SAT fingerprint analysis.
 The functions are:
+    - calc_anom_1961_1990
     - calc_anom_1981_2010
+    - calc_anom_1850_1900
+    - selreg
     - calc_weighted_mean
-    - running_mean
-    - quadratic_detrend
-    - low_pass_filter
-    - detrend_and_filter
+    - lag1_acf
+    - mk_test
+    - interpolate_nan_1D
+    - apply_mannkendall
+    - generate_segments
+    - calc_percentile
+    - calculate_trend_ols
+    - grid_trend_ols
+    - linear_regression_gmst
+    - calculate_icv_trend_std
 
 """
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -115,7 +124,8 @@ def lag1_acf(x, nlags=1):
     acov = (np.correlate(x, x, 'full') / d)[n - 1:]
     acf = acov[:nlags]/acov[0]
     return acf
-
+# =============================================================================
+# Mann-Kendall test
 def mk_test(x, a=0.05):
     """
     Mann-Kendall test for trend
@@ -266,7 +276,7 @@ def grid_trend_ols(data):
 
 # =============================================================================
 """
-Created on Sun OCt 22, 2023
+Created on Sun Oct 22, 2023
 calculate the linear regression of GMST onto the SAT spatial pattern
 Return the regression slopes and p-values
 """
