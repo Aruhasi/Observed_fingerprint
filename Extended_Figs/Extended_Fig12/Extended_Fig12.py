@@ -56,7 +56,27 @@ print(da_NorthAtlantic.min(), da_NorthAtlantic.max())
 print(da_SoutheastPacific.min(), da_SoutheastPacific.max())
 # %%
 print(da_SOP.min(), da_SOP.max())
-# In[8]:
+# In[11]:
+# # calculate the regional mean 
+# def wgt_mean(var,lon,lat):
+#     """
+#     Calculate weighted mean
+#     Parameters
+#     ----------
+#     var : 3-D array 
+#     lat, lon : 1-D arrays
+#     """
+#     #Mask nans
+#     var_ma = ma.masked_invalid(var)
+#     #Weight matrix
+#     #lat60 = lat.sel(lat=slice(60,-60))
+#     wgtmat = np.cos(np.tile(abs(lat.values[:,None])*np.pi/180,(1,len(lon))))[np.newaxis,...] #(time,lat,lon)
+#     #Apply
+#     #var_mean = np.ma.sum((var_ma*wgtmat*~var_ma.mask)/(np.ma.sum(wgtmat * ~var_ma.mask)))
+#     var_mean = var_ma*wgtmat*~var_ma.mask
+#     var_m = np.nanmean(np.nanmean(var_mean,axis=-1),axis=-1)
+#     return var_m
+# In[14]:
 # plot the year length vs trend value in four key regions for 1959-2022
 """
     Figure settings: x-axis: present trend length in years, y-axis: trend value
@@ -107,15 +127,15 @@ SEP_unforced_upper = xr.open_dataset(f'{dir_percentile_input}internal_SEP_trend_
 SOP_unforced_upper = xr.open_dataset(f'{dir_percentile_SOP}internal_SOP_trend_upper_percentile.nc')
 # %%
 # rename the variable name
-# arctic_unforced_lower = arctic_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# NAWH_unforced_lower = NAWH_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# SEP_unforced_lower = SEP_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# SOP_unforced_lower = SOP_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
+arctic_unforced_lower = arctic_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
+NAWH_unforced_lower = NAWH_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
+SEP_unforced_lower = SEP_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
+SOP_unforced_lower = SOP_unforced_lower.rename_vars({'__xarray_dataarray_variable__':'trend'})
 
-# arctic_unforced_upper = arctic_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# NAWH_unforced_upper = NAWH_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# SEP_unforced_upper = SEP_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
-# SOP_unforced_upper = SOP_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
+arctic_unforced_upper = arctic_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
+NAWH_unforced_upper = NAWH_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
+SEP_unforced_upper = SEP_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
+SOP_unforced_upper = SOP_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
 # %%
 # end in 2013
 arctic_unforced_lower_2013 = arctic_unforced_lower.trend.values[0:55]
@@ -189,32 +209,78 @@ ax2.set_ylim([-1.0, 1.0])
 ax3.set_ylim([-1.0, 1.0])
 ax4.set_ylim([-0.6, 0.6])
 
-ax1.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
-ax2.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
-ax3.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
-ax4.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
+# ax1.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
+# ax2.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
+# ax3.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
+# ax4.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
 
-ax1.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
-ax2.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
-ax3.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
-ax4.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
-
+# ax1.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
+# ax2.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
+# ax3.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
+# ax4.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
+# Set x and y axis limits
+for ax in [ax1, ax2, ax3, ax4]:
+    ax.set_xlim([1948, 2006])
+    
+    ax.tick_params(axis='x', labelsize=26)
+    ax.tick_params(axis='y', labelsize=26)
+    # ax.xaxis.set_major_locator(MultipleLocator(10))
+    ax.set_xticks([1954, 1964, 1974, 1984, 1994, 2004])
+    ax.set_xticklabels(['1954', '1964', '1974', '1984', '1994', '2004'])
+    ax.set_ylabel('Trend (°C/decade)', fontsize=30)
+    ax.set_xlabel('Start year of linear trend', fontsize=30)
+    # ax.tick_params(axis='y', which='major', length=12, width=2.5, direction='in')
+    # ax.tick_params(axis='y', which='minor', length=8, width=2.5, direction='in')
+    ax.tick_params(axis='x', which='major', length=12, width=2.5, direction='in')
+    # ax.xaxis.set_minor_locator(MultipleLocator(2))
+    ax.tick_params(axis='x', which='minor', length=8, width=2.5, direction='in')
+    
 # add the top x axis label: length of the trend
 ax1_upper = ax1.twiny()
 ax2_upper = ax2.twiny()
 ax3_upper = ax3.twiny()
 ax4_upper = ax4.twiny()
 
-for ax_upper in [ax1_upper, ax2_upper, ax3_upper, ax4_upper]:
-    ax_upper.invert_xaxis()
-    ax_upper.set_xlim([67, 8])
+# Define the bottom axis range
+start_years = np.array([1954, 1964, 1974, 1984, 1994, 2004])  # start years
+trend_lengths = 2004 - start_years + 10                      # exact match with figure design
+
+# For each top twin axis
+for ax, ax_upper in zip([ax1, ax2, ax3, ax4], [ax1_upper, ax2_upper, ax3_upper, ax4_upper]):
+    ax_upper.set_xlim(ax.get_xlim())  # Align exactly with bottom axis
+    ax_upper.set_xticks(start_years)
+    ax_upper.set_xticklabels(trend_lengths.astype(str))  # Label as trend length
     ax_upper.set_xlabel('Length of trends', fontsize=28, labelpad=10)
-    ax_upper.set_xticks([60, 50, 40, 30, 20, 10])
-    ax_upper.set_xticklabels(['60', '50', '40', '30', '20', '10'])
-    ax_upper.tick_params(axis='x', labelsize=26)
-    ax_upper.tick_params(axis='x', which='major', length=12, width=2.5, direction='in')
-    ax_upper.xaxis.set_minor_locator(MultipleLocator(2))
+    ax_upper.tick_params(axis='x', labelsize=26, which='major', length=12, width=2.5, direction='in')
     ax_upper.tick_params(axis='x', which='minor', length=8, width=2.5, direction='in')
+    ax_upper.xaxis.set_minor_locator(MultipleLocator(2))
+
+# reverse the top x axis
+# ax1_upper.invert_xaxis()
+# ax2_upper.invert_xaxis()
+# ax3_upper.invert_xaxis()
+# ax4_upper.invert_xaxis()
+
+# ax1_upper.set_xlim([67,8])
+# ax2_upper.set_xlim([67,8])
+# ax3_upper.set_xlim([67,8])
+# ax4_upper.set_xlim([67,8])
+
+# ax1_upper.set_xlabel('Length of trends', fontsize=28, labelpad=10)
+# ax2_upper.set_xlabel('Length of trends', fontsize=28, labelpad=10)
+# ax3_upper.set_xlabel('Length of trends', fontsize=28, labelpad=10)
+# ax4_upper.set_xlabel('Length of trends', fontsize=28, labelpad=10)
+
+# ax1_upper.set_xticks([60, 50, 40, 30, 20, 10])
+# ax2_upper.set_xticks([60, 50, 40, 30, 20, 10])
+# ax3_upper.set_xticks([60, 50, 40, 30, 20, 10])
+# ax4_upper.set_xticks([60, 50, 40, 30, 20, 10])
+
+# # set the x axis top label 
+# ax1_upper.set_xticklabels(['60', '50', '40', '30', '20', '10'])
+# ax2_upper.set_xticklabels(['60', '50', '40', '30', '20', '10'])
+# ax3_upper.set_xticklabels(['60', '50', '40', '30', '20', '10'])
+# ax4_upper.set_xticklabels(['60', '50', '40', '30', '20', '10'])
 
 # set the frame border width all around the subplot
 ax1.spines['top'].set_linewidth(2.5)
@@ -307,46 +373,24 @@ ax4.tick_params(axis='y', which='major', length=12, width=2.5, direction='in')
 
 # ax3.yaxis.set_ticks([])
 # add three vertical lines of the x-axis: 10-year[2013],30yr[1993],60yr[1963]
-# ax1.axvline(x=2013, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax1.axvline(x=1993, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-ax1.axvline(x=1979, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax1.axvline(x=1963, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax1.axvline(x=2004, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax1.axvline(x=1984, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax1.axvline(x=1954, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
 
-# ax2.axvline(x=2013, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax2.axvline(x=1993, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-ax2.axvline(x=1979, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax2.axvline(x=1963, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax2.axvline(x=2004, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax2.axvline(x=1984, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax2.axvline(x=1954, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
 
-# ax3.axvline(x=2013, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax3.axvline(x=1993, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-ax3.axvline(x=1979, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax3.axvline(x=1963, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax3.axvline(x=2004, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax3.axvline(x=1984, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax3.axvline(x=1954, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
 
-# ax4.axvline(x=2013, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax4.axvline(x=1993, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-ax4.axvline(x=1979, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
-# ax4.axvline(x=1963, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax4.axvline(x=2004, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax4.axvline(x=1984, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
+ax4.axvline(x=1954, color='#999A9E', linestyle='-', linewidth=2.5, alpha=0.75)
 
 # Add the text labels for the vertical lines
-# ax1.text(2013.1, -0.96, '10yr', fontsize=24, rotation=90, color='#999A9E')
-# ax1.text(1993.1, -0.96, '30yr', fontsize=24, rotation=90, color='#999A9E')
-ax1.text(1979.1, -0.96, '1979-2013', fontsize=26, rotation=90, color='#999A9E')
-# ax1.text(1963.1, -0.96, '60yr', fontsize=26, rotation=90, color='#999A9E')
 
-# ax2.text(2013.1, -0.96, '10yr', fontsize=26, rotation=90, color='#999A9E')
-# ax2.text(1993.1, -0.96, '30yr', fontsize=26, rotation=90, color='#999A9E')
-ax2.text(1979.1, -0.96, '1979-2013', fontsize=26, rotation=90, color='#999A9E')
-# ax2.text(1963.1, -0.96, '60yr', fontsize=26, rotation=90, color='#999A9E')
-
-# ax3.text(2013.1, -1.26, '10yr', fontsize=26, rotation=90, color='#999A9E')
-# ax3.text(1993.1, -1.26, '30yr', fontsize=26, rotation=90, color='#999A9E')
-ax3.text(1979.1, -0.96, '1979-2013', fontsize=26, rotation=90, color='#999A9E')
-# ax3.text(1963.1, -1.26, '60yr', fontsize=26, rotation=90, color='#999A9E')
-
-# ax4.text(2013.1, -0.36, '10yr', fontsize=26, rotation=90, color='#999A9E')
-# ax4.text(1993.1, -0.36, '30yr', fontsize=26, rotation=90, color='#999A9E')
-ax4.text(1979.1, -0.56, '1979-2013', fontsize=26, rotation=90, color='#999A9E')
-# ax4.text(1963.1, -0.36, '60yr', fontsize=26, rotation=90, color='#999A9E')
 # add the order of the subplot
 ax1.text(1945, 1.85, 'a', fontsize=35, ha='center', va='center', fontweight='bold')
 ax2.text(1945, 1.58, 'b', fontsize=35, ha='center', va='center', fontweight='bold')
@@ -378,7 +422,7 @@ custom_lines = [Line2D([0], [0], color=colors[0], lw=3.5),
 # blue_shading = mpatches.Patch(color=colors[2], alpha=0.3, label='ICV 5th-95th percentile')
 
 # Create the legend
-leg2 = ax1.legend(custom_lines, ['total', 'human forced', 'internal variability'], loc='lower left', fontsize=26)
+leg2 = ax1.legend(custom_lines, ['total', 'external forcing', 'internal variability'], loc='lower left', fontsize=26)
 ax1.add_artist(leg2)
 
 # Add the patch for the blue shading
@@ -394,9 +438,9 @@ ax1.add_artist(leg2)
 # ax_legend.legend(*ax1.get_legend_handles_labels(), title='', loc='center', fontsize=30, ncol=3)
 
 # fig_legend.savefig('legend4.eps', format='eps', dpi=300, bbox_inches='tight')
-plt.savefig('Extended-Fig-10.png', dpi=300, bbox_inches='tight')
-plt.savefig('Extended-Fig-10.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('Extended-Fig-10.eps', format='eps', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig11.png', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig11.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig11.eps', format='eps', dpi=300, bbox_inches='tight')
 plt.show()
 
 # %%

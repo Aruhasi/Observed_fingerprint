@@ -181,7 +181,7 @@ dir_forced_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_tr
 HadCRUT5_trend = xr.open_dataset(dir_forced_input + 
                                  'HadCRUT5_annual_forced_30yr_trend.nc')
 # In[2]:
-dir_model_in = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure2_Forced/data/Smiles_ensemble/'
+dir_model_in = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure6_Forced/data/Smiles_ensemble/'
 MMEM_annual_trend = xr.open_dataset(dir_model_in + 
                                     'MMEM_annual_forced_30yr_trend.nc')
 # rename the variable name
@@ -193,7 +193,7 @@ HadCRUT5_trend  = HadCRUT5_trend.rename({'__xarray_dataarray_variable__': 'trend
 
 # In[3]:
 # calculate the pattern difference between OBS and MMEM
-pattern_diff = HadCRUT5_trend.trend - MMEM_annual_trend.trend
+pattern_diff = MMEM_annual_trend.trend - HadCRUT5_trend.trend
 
 # In[4]:
 def cal_ratio(data,pattern_diff):
@@ -211,13 +211,13 @@ mean_ratio = pattern_ratio.mean().values*100
 dir_internal_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure3/data/ICV_std/'
 HadCRUT5_internal_trend = xr.open_dataset(dir_internal_input +'ICV_segments_30yr_std_trend_pattern.nc')
 
-dir_model_internal = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure3/data/'
+dir_model_internal = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure7/data/'
 MMEM_internal_trend = xr.open_dataset(dir_model_internal + 'MMEM_annual_30yr_noise_trend_std.nc')
 # %%
 HadCRUT5_internal_trend = HadCRUT5_internal_trend.rename({'ICV_segments_30yr_std_trend_pattern': 'trend'})
 MMEM_internal_trend = MMEM_internal_trend.rename({'tas': 'trend'})
 # %%
-ICV_diff = HadCRUT5_internal_trend.trend - MMEM_internal_trend.trend
+ICV_diff = MMEM_internal_trend.trend - HadCRUT5_internal_trend.trend
 print(ICV_diff)
 # %%
 Ratio_ICV = cal_ratio(HadCRUT5_internal_trend.trend, ICV_diff)
@@ -242,10 +242,14 @@ import cartopy.mpl.ticker as cticker
 import matplotlib.colors as mcolors
 import palettable
 #  cmap = mcolors.ListedColormap(palettable.scientific.diverging.Vik_20.mpl_colors)
-cmap=mcolors.ListedColormap(palettable.cmocean.diverging.Balance_20.mpl_colors)
+cmap=mcolors.ListedColormap(palettable.cmocean.diverging.Curl_20.mpl_colors)  # Reverse the colormap
+# %%
+print("Cmap base color count:", len(palettable.cmocean.diverging.Curl_20.mpl_colors))
+# cmap = 'seismic_r'
 # from palettable.colorbrewer.cmocean import Balance_20
 # from palettable.colorbrewer.diverging import 
 # from palettable.colorbrewer.cartocolors.diverging import Geyser_7
+# %%
 # Set up the figure with a 2x2 layout
 fig = plt.figure(figsize=(25, 18))
 gs = plt.GridSpec(2, 2, height_ratios=[1, 1], hspace=0.25, wspace=0.3)
@@ -274,8 +278,8 @@ for i, segment in enumerate(time_segments):
     ax_pdf_forced.axvline(mmem_value, color=colors[i], linestyle='-.', linewidth=4.5, label=f"r(Obs, MMEM)({segment})")
 
 # Add title and label
-ax_pdf_forced.text(-0.12, 1.1, "a", transform=ax_pdf_forced.transAxes, fontsize=34, fontweight='bold', va='top')
-ax_pdf_forced.text(0.5, 1.05, "Human-forced pattern correlation", fontsize=28, ha='center', va='center', transform=ax_pdf_forced.transAxes)
+ax_pdf_forced.text(-0.12, 1.2, "a", transform=ax_pdf_forced.transAxes, fontsize=34, fontweight='bold', va='top')
+ax_pdf_forced.text(0.5, 1.1, "Externally forced pattern correlation", fontsize=30, ha='center', va='center', transform=ax_pdf_forced.transAxes)
 ax_pdf_forced.set_xlabel("Pattern Correlation", fontsize=26)
 ax_pdf_forced.set_ylabel("Density", fontsize=26)
 # ax_pdf_forced.grid(True)
@@ -309,8 +313,8 @@ for i, segment in enumerate(time_segments):
     ax_pdf_icv.axvline(mmem_value, color=colors[i], linestyle='-.', linewidth=4.5, label=f"r(Obs, MMEM)({segment})")
 
 # Add title and label
-ax_pdf_icv.text(-0.12, 1.1, "b", transform=ax_pdf_icv.transAxes, fontsize=34, fontweight='bold', va='top')
-ax_pdf_icv.text(0.5, 1.05, "Internal variability pattern correlation", fontsize=28, ha='center', va='center', transform=ax_pdf_icv.transAxes)
+ax_pdf_icv.text(-0.12, 1.2, "b", transform=ax_pdf_icv.transAxes, fontsize=34, fontweight='bold', va='top')
+ax_pdf_icv.text(0.5, 1.1, "Internal variability pattern correlation", fontsize=30, ha='center', va='center', transform=ax_pdf_icv.transAxes)
 ax_pdf_icv.set_xlabel("Pattern Correlation", fontsize=26)
 ax_pdf_icv.set_ylabel("Density", fontsize=26)
 # ax_pdf_icv.grid(True)
@@ -322,8 +326,8 @@ ax_pdf_icv.tick_params(axis='y', labelsize=26)
 ax_pdf_icv.set_xlim(0.4, 1.0)
 ax_pdf_icv.set_ylim(0., 20)
 # make the ticker longer
-ax_pdf_icv.tick_params(axis='x', direction='out', length=6, width=2)
-ax_pdf_icv.tick_params(axis='y', direction='out', length=6, width=2)
+ax_pdf_icv.tick_params(axis='x', direction='out', length=8, width=2)
+ax_pdf_icv.tick_params(axis='y', direction='out', length=8, width=2)
 # -------------------- Add Legends --------------------
 legend_elements_pattern = [
     Line2D([0], [0], color=colors[0], lw=0, label='10-year'),
@@ -333,7 +337,7 @@ legend_elements_pattern = [
 
 legend_elements_time = [
     Line2D([0], [0], color='black', lw=4.5, linestyle='-.', label='OBS'),
-    Line2D([0], [0], color='black', lw=4.5, linestyle='-', label='Model simulations')
+    Line2D([0], [0], color='black', lw=4.5, linestyle='-', label='Large Ensembles'),
 ]
 
 fig.legend(
@@ -367,7 +371,7 @@ fig.legend(
 # -------------------- Subplot c: Forced Minus MMEM Map --------------------
 ax_forced_map = plt.subplot(gs[1, 0], projection=ccrs.Robinson(central_longitude=180))
 ax_forced_map.coastlines(resolution='110m')
-gl = ax_forced_map.gridlines(draw_labels=True, linestyle='--', color='gray', alpha=0.5)
+gl = ax_forced_map.gridlines(draw_labels=True, linestyle='--', color='gray', alpha=0.15, linewidth=0.25)
 gl.top_labels = False
 gl.right_labels = False
 gl.xformatter = cticker.LongitudeFormatter()
@@ -378,30 +382,24 @@ gl.bottom_labels = True
 gl.left_labels = True
 gl.xlocator = mticker.FixedLocator([-180, -120, -60, 0, 60, 120])
 
-# Dynamic levels based on data range
-levels_forced = np.arange(-0.5, 0.55, 0.05)  # 11 levels
-cmap_forced = plt.get_cmap(cmap)
+levels_forced = np.arange(-0.5, 0.55, 0.05)  # symmetric around 0
+n_bins = len(levels_forced) - 1  # number of color intervals = 21
 
-# Ensure the colormap has enough colors
-n_bins = len(levels_forced) + 1  # Number of levels + 2 extensions
-colors_forced = cmap_forced(np.linspace(0, 1, n_bins))
-custom_cmap_forced = ListedColormap(colors_forced)
-
-# Update BoundaryNorm
-norm_forced = BoundaryNorm(levels_forced, ncolors=n_bins, extend="both")
+norm_forced = BoundaryNorm(boundaries=levels_forced, ncolors=n_bins)
+cmap_forced = "RdBu_r" #mcolors.ListedColormap(palettable.cmocean.diverging.Curl_20.mpl_colors)
 
 p_forced = forced_diff.plot(
     ax=ax_forced_map,
     transform=ccrs.PlateCarree(),
-    cmap=custom_cmap_forced,
+    cmap=cmap_forced,
     norm=norm_forced,
     levels=levels_forced,
     add_colorbar=False
 )
 
 # Add titleHuman-forced SAT difference\n
-ax_forced_map.text(-0.12, 1.1, "c", transform=ax_forced_map.transAxes, fontsize=34, fontweight='bold', va='top')
-ax_forced_map.set_title("1993-2022", fontsize=28, pad=10, loc='center')
+ax_forced_map.text(-0.12, 1.2, "c", transform=ax_forced_map.transAxes, fontsize=34, fontweight='bold', va='top')
+ax_forced_map.set_title("MMLE - OBS\n(1993-2022)", fontsize=28, pad=10, loc='center')
 
 # Add percentage annotation in the upper-right corner
 ax_forced_map.text(0.95, 1.05, f"{mean_ratio:.0f}%", fontsize=28, ha='center', va='center',
@@ -409,15 +407,29 @@ ax_forced_map.text(0.95, 1.05, f"{mean_ratio:.0f}%", fontsize=28, ha='center', v
 
 # Add colorbar
 cbar_ax_forced = fig.add_axes([0.175, 0.1, 0.25, 0.02])
-cbar_forced = plt.colorbar(p_forced, cax=cbar_ax_forced, orientation='horizontal', ticks=np.round(levels_forced, 2))
-cbar_forced.set_label("Human-forced SAT diff. Obs minus MMEM\n(°C/decade)", fontsize=24, labelpad=10, loc='center')
+# cbar_forced = plt.colorbar(
+#     p_forced,
+#     cax=cbar_ax_forced,
+#     orientation='horizontal',
+#     ticks=[-0.5, -0.25, 0, 0.25, 0.5],
+#     extend='neither'  
+# )
+cbar_forced = plt.colorbar(
+    p_forced,
+    cax=cbar_ax_forced,
+    orientation='horizontal',
+    extend='neither',  # <-- Enable both ends for symmetry
+    ticks=[-0.5, -0.25, 0, 0.25, 0.5]
+)
+cbar_forced.set_label("Externally forced SAT differences\n(°C per decade)", fontsize=24, labelpad=10, loc='center')
 cbar_forced.ax.tick_params(labelsize=22)
 cbar_forced.ax.tick_params(direction='out', length=10, width=2)  # Adjust values as needed
 cbar_forced.set_ticks([-0.5, -0.25, 0, 0.25, 0.5])
+
 # -------------------- Subplot d: ICV Minus MMEM Map --------------------
 ax_icv_map = plt.subplot(gs[1, 1], projection=ccrs.Robinson(central_longitude=180))
 ax_icv_map.coastlines(resolution='110m')
-gl1 = ax_icv_map.gridlines(draw_labels=True, linestyle='--', color='gray', alpha=0.5)
+gl1 = ax_icv_map.gridlines(draw_labels=True, linestyle='--', color='gray', alpha=0.15, linewidth=0.25)
 gl1.top_labels = False
 gl1.right_labels = False
 gl1.xformatter = cticker.LongitudeFormatter()
@@ -428,29 +440,25 @@ gl1.bottom_labels = True
 gl1.left_labels = True
 gl1.xlocator = mticker.FixedLocator([-180, -90, 0, 90, 180])
 # Dynamic levels based on data range
-levels_icv = np.arange(-0.25, 0.275, 0.025)  # 15 levels
-cmap_icv = plt.get_cmap(cmap)
+levels_icv = np.arange(-0.25, 0.275, 0.025)  # symmetric
+n_bins_icv = len(levels_icv)-1
 
-# Ensure the colormap has enough colors
-n_bins_icv = len(levels_icv) + 1  # Number of levels + 2 extensions
-colors_icv = cmap_icv(np.linspace(0, 1, n_bins_icv))
-custom_cmap_icv = ListedColormap(colors_icv)
-
-# Update BoundaryNorm
-norm_icv = BoundaryNorm(levels_icv, ncolors=n_bins_icv, extend="both")
+norm_icv = BoundaryNorm(boundaries=levels_icv, ncolors=n_bins_icv)
+cmap_icv = "RdBu_r" #mcolors.ListedColormap(palettable.cmocean.diverging.Curl_20.mpl_colors)
+# cmap_icv = plt.get_cmap("RdBu_r") # Use a diverging colormap
 
 p_icv = ICV_diff.plot(
     ax=ax_icv_map,
     transform=ccrs.PlateCarree(),
-    cmap=custom_cmap_icv,
+    cmap=cmap_icv,
     norm=norm_icv,
     levels=levels_icv,
     add_colorbar=False
 )
 
 # Add titleInternal variability SAT difference\n
-ax_icv_map.text(-0.12, 1.1, "d", transform=ax_icv_map.transAxes, fontsize=34, fontweight='bold', va='top')
-ax_icv_map.set_title("1993-2022", fontsize=28, pad=10, loc='center')
+ax_icv_map.text(-0.12, 1.2, "d", transform=ax_icv_map.transAxes, fontsize=34, fontweight='bold', va='top')
+ax_icv_map.set_title("MMLE - OBS\n(1993-2022)", fontsize=28, pad=10, loc='center')
 
 # Add percentage annotation in the upper-right corner
 ax_icv_map.text(0.95, 1.05, f"{mean_ratio_ICV:.0f}%", fontsize=28, ha='center', va='center',
@@ -458,8 +466,22 @@ ax_icv_map.text(0.95, 1.05, f"{mean_ratio_ICV:.0f}%", fontsize=28, ha='center', 
 
 # Add colorbar
 cbar_ax_icv = fig.add_axes([0.61, 0.1, 0.25, 0.02])
-cbar_icv = plt.colorbar(p_icv, cax=cbar_ax_icv, orientation='horizontal', ticks=np.round(levels_icv, 2))
-cbar_icv.set_label("Internal variability SAT diff. Obs minus MMEM\n(°C/decade)", fontsize=24, labelpad=10, loc='center')
+# cbar_icv = plt.colorbar(
+#     p_icv,
+#     cax=cbar_ax_icv,
+#     orientation='horizontal',
+#     ticks=[-0.25, -0.125, 0, 0.125, 0.25],
+#     extend='neither'  # No extension
+# )
+cbar_icv = plt.colorbar(
+    p_icv,
+    cax=cbar_ax_icv,
+    orientation='horizontal',
+    extend='neither',  # No extension
+    ticks=[-0.25, -0.125, 0, 0.125, 0.25]
+)
+
+cbar_icv.set_label("Internal variability SAT differences\n(°C per decade)", fontsize=24, labelpad=10, loc='center')
 cbar_icv.ax.tick_params(labelsize=22)
 # Make ticks longer
 cbar_icv.ax.tick_params(direction='out', length=10, width=2)  # Adjust values as needed
@@ -468,9 +490,9 @@ cbar_icv.set_ticks([-0.25, -0.125, 0, 0.125, 0.25])
 
 # Save and display the figure
 plt.tight_layout()
-fig.savefig('Fig2.png', dpi=300, bbox_inches='tight')
-fig.savefig('Fig2.pdf', dpi=300, bbox_inches='tight')
-fig.savefig('Fig2.eps', dpi=300, bbox_inches='tight')
+fig.savefig('Fig3.png', dpi=300, bbox_inches='tight')
+fig.savefig('Fig3.pdf', dpi=300, bbox_inches='tight')
+fig.savefig('Fig3.eps', format='eps', dpi=300, bbox_inches='tight')
 plt.show()
 
 # In[]:
