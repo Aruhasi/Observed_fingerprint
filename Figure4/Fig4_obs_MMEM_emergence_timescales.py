@@ -4,32 +4,32 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import numpy as np
 # %%
-data_obs = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure3/data/fig3_final/fig3_final.nc")
+data_obs = xr.open_dataset("./Figure3/data/fig3_final/fig3_final.nc")
 data_obs = data_obs.fillna(75)
 # %%
 # input monotonicity 
-dir_in = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Revised_main_figures/Figure4_Emergence_timescale/data/'
+dir_in = './Figure4_Emergence_timescale/data/'
 monotonic_test = xr.open_dataset(dir_in+'obs_emergence_monotonicity.nc')
 # %%
 # rename the variable name
 data_obs = data_obs.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 # %%
-MIROC6_ENS = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_MIROC6/output/MIROC6_emergence_timescale_mean.nc")
+MIROC6_ENS = xr.open_dataset("./LE_evaluation/Fig3_MIROC6/output/MIROC6_emergence_timescale_mean.nc")
 MIROC6_ENS = MIROC6_ENS.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 # %%
-MPI_ENS = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_MPI/output/MPI_emergence_timescale_mean.nc")
+MPI_ENS = xr.open_dataset("./LE_evaluation/Fig3_MPI/output/MPI_emergence_timescale_mean.nc")
 MPI_ENS = MPI_ENS.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 # %%
-ACCESS_ENS = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_ACCESS/output/ACCESS_emergence_timescale_mean.nc")
+ACCESS_ENS = xr.open_dataset("./LE_evaluation/Fig3_ACCESS/output/ACCESS_emergence_timescale_mean.nc")
 ACCESS_ENS = ACCESS_ENS.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 
-EC_Earth3 = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_EC_Earth/output/EC_Earth_emergence_timescale_mean.nc")
+EC_Earth3 = xr.open_dataset("./LE_evaluation/Fig3_EC_Earth/output/EC_Earth_emergence_timescale_mean.nc")
 EC_Earth3 = EC_Earth3.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 
-IPSL_ENS = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_IPSL/output/IPSL_emergence_timescale_mean.nc")
+IPSL_ENS = xr.open_dataset("./LE_evaluation/Fig3_IPSL/output/IPSL_emergence_timescale_mean.nc")
 IPSL_ENS = IPSL_ENS.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 
-CanESM5_ENS = xr.open_dataset("/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_CanESM5/output/CanESM5_emergence_timescale_mean.nc")
+CanESM5_ENS = xr.open_dataset("./LE_evaluation/Fig3_CanESM5/output/CanESM5_emergence_timescale_mean.nc")
 CanESM5_ENS = CanESM5_ENS.rename_vars({'__xarray_dataarray_variable__': 'emergence_timescale_mean'})
 
 # %%
@@ -38,7 +38,7 @@ MMEM = (MIROC6_ENS + MPI_ENS +
         ACCESS_ENS + EC_Earth3 + 
         IPSL_ENS + CanESM5_ENS) / 6
 # %%
-dir_out = "/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_model_evaluation/"
+dir_out = "./Supp_model_evaluation/"
 MMEM.to_netcdf(dir_out + "MMEM_emergence_timescale_mean.nc")
 # %%
 # check the NaN values

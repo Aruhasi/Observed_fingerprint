@@ -113,9 +113,9 @@ from matplotlib.colors import ListedColormap
 from matplotlib.colors import BoundaryNorm, ListedColormap
 # %%
 # import the shaded region for unforced trend
-dir_percentile_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/data/'
-dir_percentile_NAT_trend = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/data/NAT_wrt_nh_Keil/'
-dir_percentile_SOP = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/check_SO_region/data/'
+dir_percentile_input = './Figure5/data/'
+dir_percentile_NAT_trend = './Figure5/data/NAT_wrt_nh_Keil/'
+dir_percentile_SOP = './Figure5/check_SO_region/data/'
 arctic_unforced_lower = xr.open_dataset(f'{dir_percentile_input}internal_arctic_trend_lower_percentile.nc')
 NAWH_unforced_lower = xr.open_dataset(f'{dir_percentile_NAT_trend}internal_subpolar_gyre_trend_lower_percentile.nc')
 SEP_unforced_lower = xr.open_dataset(f'{dir_percentile_input}internal_SEP_trend_lower_percentile.nc')
@@ -438,9 +438,9 @@ ax1.add_artist(leg2)
 # ax_legend.legend(*ax1.get_legend_handles_labels(), title='', loc='center', fontsize=30, ncol=3)
 
 # fig_legend.savefig('legend4.eps', format='eps', dpi=300, bbox_inches='tight')
-plt.savefig('Extended_Fig11.png', dpi=300, bbox_inches='tight')
-plt.savefig('Extended_Fig11.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('Extended_Fig11.eps', format='eps', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig12.png', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig12.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('Extended_Fig12.eps', format='eps', dpi=300, bbox_inches='tight')
 plt.show()
 
 # %%

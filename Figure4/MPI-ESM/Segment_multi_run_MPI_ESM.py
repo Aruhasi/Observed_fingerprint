@@ -82,8 +82,8 @@ def compute_trend(data, segment_lengths, trend_function):
 # %%
 def main(runs):
     # Directory setup
-    dir_residuals = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/MPI_ESM/'
-    dir_output = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_MPI/output/'
+    dir_residuals = './Figure3/MPI_ESM/'
+    dir_output = './Figure4_MPI/output/'
     
     # Load dataset
     ds_MPI_ESM_1850_2022 = xr.open_mfdataset(

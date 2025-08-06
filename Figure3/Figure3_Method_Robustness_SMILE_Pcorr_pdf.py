@@ -37,7 +37,7 @@ def read_correlations(file_path):
     return correlations
 # In[3]:
 # input the pattern correlation of each models: single realization and the ensemble mean
-dir_in = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/'
+dir_in = './Figure3/'
 
 CanESM5_run_ens_corr = read_correlations(dir_in + 'CanESM5/pattern_correlations.txt')
 IPSL_run_ens_corr = read_correlations(dir_in + 'IPSL/pattern_correlations.txt')
@@ -176,12 +176,12 @@ MMEM_unforced_corr = {'10-year': [0.67], '30-year': [0.60], '60-year': [0.58]}
 # Subplots: c, d
 # In[1]:
 # input the 30-year forced trend patterns of OBS and MMEM
-dir_forced_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure1/data_revision/'
+dir_forced_input = './Figure1/data_revision/'
 
 HadCRUT5_trend = xr.open_dataset(dir_forced_input + 
                                  'HadCRUT5_annual_forced_30yr_trend.nc')
 # In[2]:
-dir_model_in = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure6_Forced/data/Smiles_ensemble/'
+dir_model_in = './Supp_Figure7_Forced/data/Smiles_ensemble/'
 MMEM_annual_trend = xr.open_dataset(dir_model_in + 
                                     'MMEM_annual_forced_30yr_trend.nc')
 # rename the variable name
@@ -208,10 +208,10 @@ print(pattern_ratio.min().values)
 mean_ratio = pattern_ratio.mean().values*100
 # In[5]:
 # Input the Observational internal trend (wrt MMEM GSAT)
-dir_internal_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure3/data/ICV_std/'
+dir_internal_input = './Figure3/data/ICV_std/'
 HadCRUT5_internal_trend = xr.open_dataset(dir_internal_input +'ICV_segments_30yr_std_trend_pattern.nc')
 
-dir_model_internal = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Supp_Figure7/data/'
+dir_model_internal = './Supp_Figure8/data/'
 MMEM_internal_trend = xr.open_dataset(dir_model_internal + 'MMEM_annual_30yr_noise_trend_std.nc')
 # %%
 HadCRUT5_internal_trend = HadCRUT5_internal_trend.rename({'ICV_segments_30yr_std_trend_pattern': 'trend'})

@@ -28,7 +28,7 @@ def func_mk(x):
 
 # In[5]:
 # Input the MMEM of SAT-OBS internal variability
-dir_residuals = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/EC_Earth/'
+dir_residuals = './Figure3/EC_Earth/'
 ds_EC_Earth_1850_2022 = xr.open_mfdataset(dir_residuals + 'GSAT_EC_Earth_Internal_Variability_anomalies_1850_2022.nc',chunks={'run':1})
 
 # In[6]:
@@ -172,7 +172,7 @@ ds_combined
 #         # Append data
 #         ds_combined[key_mean]= (['lat', 'lon'], data)
 # In[20]:
-ds_output = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/EC_Earth/'
+ds_output = './Figure3/EC_Earth/'
 # ds_combined['ICV_segments_10yr_std_trend_pattern'].to_netcdf(ds_output + 'ICV_segments_10yr_std_trend_pattern.nc')
 # ds_combined['ICV_segments_30yr_std_trend_pattern'].to_netcdf(ds_output + 'ICV_segments_30yr_std_trend_pattern.nc')
 ds_combined['ICV_segments_60yr_std_trend_pattern'].to_netcdf(ds_output + 'ICV_segments_60yr_std_trend_pattern.nc')

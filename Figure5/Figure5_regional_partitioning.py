@@ -22,9 +22,9 @@ variable_name = np.arange(1950,2014)
 keys = [f'{i}-2022' for i in variable_name]
 region_name = ['Arctic', 'subpolar_gyre','SoutheastPacific','SOP']
 # load data
-dir_input = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/data/'
-dir_SOP_trend = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/check_SO_region/data/'
-dir_NAT_trend = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure4/data/NAT_wrt_nh_Keil/'
+dir_input = './Figure5/data/'
+dir_SOP_trend = './Figure5/check_SO_region/data/'
+dir_NAT_trend = './Figure5/data/NAT_wrt_nh_Keil/'
 data_array = {}
 
 # for region in region_name:
@@ -141,7 +141,7 @@ SEP_unforced_upper = SEP_unforced_upper.rename_vars({'__xarray_dataarray_variabl
 SOP_unforced_upper = SOP_unforced_upper.rename_vars({'__xarray_dataarray_variable__':'trend'})
 # %%
 # overlaid the PI-control constructed unforced trend range
-PI_unforced_trend = xr.open_dataset('/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Revision_check/PI_control_ICV/Data/percentile/PI_Control_percentiles.nc')
+PI_unforced_trend = xr.open_dataset('./Revision_check/PI_control_ICV/Data/percentile/PI_Control_percentiles.nc')
 PI_unforced_trend
 # %%
 # rename the variable name
@@ -649,9 +649,9 @@ ax1.add_artist(leg2)
 # ax_legend.legend(*ax1.get_legend_handles_labels(), title='', loc='center', fontsize=30, ncol=3)
 
 # fig_legend.savefig('legend4.eps', format='eps', dpi=300, bbox_inches='tight')
-plt.savefig('Figure4.png', dpi=300, bbox_inches='tight')
-plt.savefig('Figure4.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('Figure4.eps', format='eps', dpi=300, bbox_inches='tight')
+plt.savefig('Figure5.png', dpi=300, bbox_inches='tight')
+plt.savefig('Figure5.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('Figure5.eps', format='eps', dpi=300, bbox_inches='tight')
 plt.show()
 
 # %%

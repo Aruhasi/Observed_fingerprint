@@ -11,7 +11,7 @@ import os
 import src.SAT_function as data_process
 import src.Data_Preprocess as preprosess
 # %%
-# dir_residuals = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/IPSL/'
+# dir_residuals = './Figure3/IPSL/'
 # dir_output = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_IPSL/output/'
     
 # # Load dataset
@@ -90,8 +90,8 @@ def compute_trend(data, segment_lengths, trend_function):
 # %%
 def main(runs):
     # Directory setup
-    dir_residuals = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/IPSL/'
-    dir_output = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_IPSL/output/'
+    dir_residuals = './Figure3/IPSL/'
+    dir_output = './Figure4_IPSL/output/'
     
     # Load dataset
     ds_IPSL_1850_2022 = xr.open_mfdataset(

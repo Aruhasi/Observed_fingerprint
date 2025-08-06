@@ -83,9 +83,9 @@ def compute_trend(data, segment_lengths, trend_function):
 # %%
 def main(runs):
     # Directory setup
-    dir_residuals = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/Figure2/CanESM5/'
-    dir_output = '/work/mh0033/m301036/Land_surf_temp/Disentangling_OBS_SAT_trend/LE_evaluation/Fig3_CanESM5/output/'
-    
+    dir_residuals = './Figure3/CanESM5/'
+    dir_output = './Figure4_CanESM5/output/'
+
     # Load dataset
     ds_CanESM5_1850_2022 = xr.open_mfdataset(
         dir_residuals + 'GSAT_CanESM5_Internal_Variability_anomalies_1850_2022.nc',
