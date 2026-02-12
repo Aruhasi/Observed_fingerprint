@@ -1,2 +1,0 @@
-/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/RMSE/OBS_LPS_vs_SMILE_unforced_std_RMSE.py:232: RuntimeWarning: All-NaN slice encountered
-  rms_global = np.nanmax(rms_stack, axis=0)  # (n_runs, n_period)
