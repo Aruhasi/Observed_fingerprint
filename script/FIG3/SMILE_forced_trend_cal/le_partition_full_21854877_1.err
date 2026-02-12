@@ -1,0 +1,5 @@
+slurmstepd: error: *** STEP 21854879.0 ON l30181 CANCELLED AT 2026-01-06T16:36:49 ***
+slurmstepd: error: *** JOB 21854879 ON l30181 CANCELLED AT 2026-01-06T16:36:49 ***
+srun: error: l30181: task 0: Terminated
+srun: Terminating StepId=21854879.0
+srun: Force Terminated StepId=21854879.0

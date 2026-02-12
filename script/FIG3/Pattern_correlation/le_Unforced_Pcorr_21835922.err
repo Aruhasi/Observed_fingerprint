@@ -1,0 +1,2 @@
+/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pattern_correlation/OBS_LPS_vs_SMILE_unforced_std_Pcorr.py:275: RuntimeWarning: All-NaN slice encountered
+  corr_global = np.nanmax(corr_stack, axis=0)  # (n_runs, n_period)

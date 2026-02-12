@@ -1,0 +1,32 @@
+/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py:232: SerializationWarning: variable realization has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Single_LE_OBSLPS_partition/LE_members_GSAT_OLS_anoms_partition.py", line 221, in <module>
+    main()
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Single_LE_OBSLPS_partition/LE_members_GSAT_OLS_anoms_partition.py", line 214, in main
+    process_model(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Single_LE_OBSLPS_partition/LE_members_GSAT_OLS_anoms_partition.py", line 207, in process_model
+    ds_out.to_netcdf(out_file)
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/core/dataset.py", line 1912, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/backends/api.py", line 1232, in to_netcdf
+    dump_to_store(
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/backends/api.py", line 1279, in dump_to_store
+    store.store(variables, attrs, check_encoding, writer, unlimited_dims=unlimited_dims)
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/backends/common.py", line 266, in store
+    variables, attributes = self.encode(variables, attributes)
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/backends/common.py", line 355, in encode
+    variables, attributes = cf_encoder(variables, attributes)
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py", line 899, in cf_encoder
+    new_vars = {k: encode_cf_variable(v, name=k) for k, v in variables.items()}
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py", line 899, in <dictcomp>
+    new_vars = {k: encode_cf_variable(v, name=k) for k, v in variables.items()}
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py", line 309, in encode_cf_variable
+    var = ensure_dtype_not_object(var, name=name)
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py", line 265, in ensure_dtype_not_object
+    data = _copy_with_dtype(data, dtype=_infer_dtype(data, name))
+  File "/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py", line 181, in _infer_dtype
+    raise TypeError("infer_type must be called on a dtype=object array")
+TypeError: infer_type must be called on a dtype=object array
+slurmstepd: error: *** JOB 21716684 ON l40156 CANCELLED AT 2025-12-30T19:19:50 ***
+slurmstepd: error: *** STEP 21716684.0 ON l40156 CANCELLED AT 2025-12-30T19:19:50 ***

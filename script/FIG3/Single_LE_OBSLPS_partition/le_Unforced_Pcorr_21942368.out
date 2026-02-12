@@ -1,0 +1,40 @@
+Running segmented ICV trends for model = CESM2
+SLURM_NTASKS = 1
+[rank 0] MPI world size = 1
+[rank 0] Number of realizations for CESM2: 100
+[rank 0] Saved concatenated ICV std trend dataset to /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/CESM2_ICV_noise_std_trend_pattern_1950_2022_sliding.nc
+[rank 0] All done.
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21942368
+* JobName          : Unforced_Pcorr                                    
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l10348 (1)                                                
+* Submit date      : 2026-01-11T15:32:03
+* Start time       : 2026-01-11T15:32:33
+* End time         : 2026-01-11T15:33:42
+* Elapsed time     : 00:01:09 (Timelimit=01:00:00)                     
+* Command          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Single_LE_OBSLPS_partition/LE_concatenate.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Single_LE_OBSLPS_partition
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr     0.019              442456K (0)
+* batch  | batch            0.019
+* extern | extern           0.019                3816K (0)
+* ------------------------------------------------------------------------------
+

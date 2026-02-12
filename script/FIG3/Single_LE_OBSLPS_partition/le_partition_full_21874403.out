@@ -1,0 +1,139 @@
+
+[rank 0] === Processing model: CESM2 ===
+[rank 0] dims: time=year, lat=lat, lon=lon, member=run
+[rank 0]    member: 1
+[rank 0]    member: 2
+[rank 0]    member: 3
+[rank 0]    member: 4
+[rank 0]    member: 5
+[rank 0]    member: 6
+[rank 0]    member: 7
+[rank 0]    member: 8
+[rank 0]    member: 9
+[rank 0]    member: 10
+[rank 0]    member: 11
+[rank 0]    member: 12
+[rank 0]    member: 13
+[rank 0]    member: 14
+[rank 0]    member: 15
+[rank 0]    member: 16
+[rank 0]    member: 17
+[rank 0]    member: 18
+[rank 0]    member: 19
+[rank 0]    member: 20
+[rank 0]    member: 21
+[rank 0]    member: 22
+[rank 0]    member: 23
+[rank 0]    member: 24
+[rank 0]    member: 25
+[rank 0]    member: 26
+[rank 0]    member: 27
+[rank 0]    member: 28
+[rank 0]    member: 29
+[rank 0]    member: 30
+[rank 0]    member: 31
+[rank 0]    member: 32
+[rank 0]    member: 33
+[rank 0]    member: 34
+[rank 0]    member: 35
+[rank 0]    member: 36
+[rank 0]    member: 37
+[rank 0]    member: 38
+[rank 0]    member: 39
+[rank 0]    member: 40
+[rank 0]    member: 41
+[rank 0]    member: 42
+[rank 0]    member: 43
+[rank 0]    member: 44
+[rank 0]    member: 45
+[rank 0]    member: 46
+[rank 0]    member: 47
+[rank 0]    member: 48
+[rank 0]    member: 49
+[rank 0]    member: 50
+[rank 0]    member: 51
+[rank 0]    member: 52
+[rank 0]    member: 53
+[rank 0]    member: 54
+[rank 0]    member: 55
+[rank 0]    member: 56
+[rank 0]    member: 57
+[rank 0]    member: 58
+[rank 0]    member: 59
+[rank 0]    member: 60
+[rank 0]    member: 61
+[rank 0]    member: 62
+[rank 0]    member: 63
+[rank 0]    member: 64
+[rank 0]    member: 65
+[rank 0]    member: 66
+[rank 0]    member: 67
+[rank 0]    member: 68
+[rank 0]    member: 69
+[rank 0]    member: 70
+[rank 0]    member: 71
+[rank 0]    member: 72
+[rank 0]    member: 73
+[rank 0]    member: 74
+[rank 0]    member: 75
+[rank 0]    member: 76
+[rank 0]    member: 77
+[rank 0]    member: 78
+[rank 0]    member: 79
+[rank 0]    member: 80
+[rank 0]    member: 81
+[rank 0]    member: 82
+[rank 0]    member: 83
+[rank 0]    member: 84
+[rank 0]    member: 85
+[rank 0]    member: 86
+[rank 0]    member: 87
+[rank 0]    member: 88
+[rank 0]    member: 89
+[rank 0]    member: 90
+[rank 0]    member: 91
+[rank 0]    member: 92
+[rank 0]    member: 93
+[rank 0]    member: 94
+[rank 0]    member: 95
+[rank 0]    member: 96
+[rank 0]    member: 97
+[rank 0]    member: 98
+[rank 0]    member: 99
+[rank 0]    member: 100
+[rank 0]  -> writing /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/SAT_anomaly_partition_wrt_CESM2_CMIP6_SMBB_ENS_GSAT_1850-2022.nc
+All ranks finished LE partition.
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21874403
+* JobName          : le_partition_full                                 
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l40546 (1)                                                
+* Submit date      : 2026-01-07T13:50:40
+* Start time       : 2026-01-07T13:50:43
+* End time         : 2026-01-07T13:51:19
+* Elapsed time     : 00:00:36 (Timelimit=08:00:00)                     
+* Command          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Single_LE_OBSLPS_partition/SMILEs_Cal.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Single_LE_OBSLPS_partition
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr      0.01             7495204K (0)
+* batch  | batch             0.01
+* extern | extern            0.01                3816K (0)
+* ------------------------------------------------------------------------------
+

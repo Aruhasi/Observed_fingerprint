@@ -1,0 +1,35 @@
+Computing OBS ICV MK trend + std for segment length L=62
+Done L=62
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21823318
+* JobName          : OBS_ICV_singleL                                   
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l10595 (1)                                                
+* Submit date      : 2026-01-05T00:56:15
+* Start time       : 2026-01-05T02:34:26
+* End time         : 2026-01-05T03:31:06
+* Elapsed time     : 00:56:40 (Timelimit=08:00:00)                     
+* Command          : ./OBS_ICV_std_python_cal.bash
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    OBS_ICV_std
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | python            0.94             2738736K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* ------------------------------------------------------------------------------
+

@@ -1,0 +1,97 @@
+Computing SMILE internal variability for model: EC_Earth3
+[rank 2] MPI world size = 20
+[rank 2] Running SMILE internal variability for model: EC_Earth3
+[rank 6] MPI world size = 20
+[rank 6] Running SMILE internal variability for model: EC_Earth3
+[rank 18] MPI world size = 20
+[rank 18] Running SMILE internal variability for model: EC_Earth3
+[rank 19] MPI world size = 20
+[rank 19] Running SMILE internal variability for model: EC_Earth3
+[rank 0] MPI world size = 20
+[rank 0] Running SMILE internal variability for model: EC_Earth3
+[rank 1] MPI world size = 20
+[rank 1] Running SMILE internal variability for model: EC_Earth3
+[rank 3] MPI world size = 20
+[rank 3] Running SMILE internal variability for model: EC_Earth3
+[rank 4] MPI world size = 20
+[rank 4] Running SMILE internal variability for model: EC_Earth3
+[rank 5] MPI world size = 20
+[rank 5] Running SMILE internal variability for model: EC_Earth3
+[rank 7] MPI world size = 20
+[rank 7] Running SMILE internal variability for model: EC_Earth3
+[rank 8] MPI world size = 20
+[rank 8] Running SMILE internal variability for model: EC_Earth3
+[rank 9] MPI world size = 20
+[rank 9] Running SMILE internal variability for model: EC_Earth3
+[rank 10] MPI world size = 20
+[rank 10] Running SMILE internal variability for model: EC_Earth3
+[rank 11] MPI world size = 20
+[rank 11] Running SMILE internal variability for model: EC_Earth3
+[rank 12] MPI world size = 20
+[rank 12] Running SMILE internal variability for model: EC_Earth3
+[rank 13] MPI world size = 20
+[rank 13] Running SMILE internal variability for model: EC_Earth3
+[rank 14] MPI world size = 20
+[rank 14] Running SMILE internal variability for model: EC_Earth3
+[rank 15] MPI world size = 20
+[rank 15] Running SMILE internal variability for model: EC_Earth3
+[rank 16] MPI world size = 20
+[rank 16] Running SMILE internal variability for model: EC_Earth3
+[rank 17] MPI world size = 20
+[rank 17] Running SMILE internal variability for model: EC_Earth3
+[rank 0] Loaded residuals for model EC_Earth3 with dims: run=21, year=73, lat=90, lon=180
+[rank 0] Writing output: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SMILE_internal/EC_Earth3_SMILE_noise_trend_std_sliding_1950_2022.nc
+[rank 0] Done. Output dims: period=64, lat=90, lon=180
+[rank 1] Finished.
+[rank 2] Finished.
+[rank 3] Finished.
+[rank 4] Finished.
+[rank 5] Finished.
+[rank 6] Finished.
+[rank 7] Finished.
+[rank 8] Finished.
+[rank 9] Finished.
+[rank 10] Finished.
+[rank 11] Finished.
+[rank 12] Finished.
+[rank 13] Finished.
+[rank 14] Finished.
+[rank 15] Finished.
+[rank 16] Finished.
+[rank 17] Finished.
+[rank 18] Finished.
+[rank 19] Finished.
+Finished model: EC_Earth3
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21812200
+* JobName          : smile_noise                                       
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l40356 (1)                                                
+* Submit date      : 2026-01-04T08:56:00
+* Start time       : 2026-01-04T08:56:28
+* End time         : 2026-01-04T09:46:47
+* Elapsed time     : 00:50:19 (Timelimit=06:00:00)                     
+* Command          : ./SMILE_ICV.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    SMILE_ICV_std_cal
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr      0.84             6799116K (0)
+* batch  | batch             0.84
+* extern | extern            0.84                 860K (0)
+* ------------------------------------------------------------------------------
+

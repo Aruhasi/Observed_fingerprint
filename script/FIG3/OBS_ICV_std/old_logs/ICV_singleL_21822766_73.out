@@ -1,0 +1,287 @@
+Computing OBS ICV MK trend + std for segment length L=73
+Done L=73
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21822766
+* JobName          : OBS_ICV_singleL                                   
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l10758 (1)                                                
+* Submit date      : 2026-01-05T00:56:15
+* Start time       : 2026-01-05T03:20:08
+* End time         : 2026-01-05T04:17:27
+* Elapsed time     : 00:57:19 (Timelimit=08:00:00)                     
+* Command          : ./OBS_ICV_std_python_cal.bash
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    OBS_ICV_std
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* undefi | OBS_ICV_sing      0.96                       ()
+* 0      | python            0.95             2496628K (0)
+* batch  | batch             0.96
+* extern | extern            0.96                 860K (0)
+* undefi | OBS_ICV_sing      0.61                       ()
+* 0      | python            0.61             3888820K (0)
+* batch  | batch             0.61
+* extern | extern            0.61                 860K (0)
+* undefi | OBS_ICV_sing      0.62                       ()
+* 0      | python            0.62             3871428K (0)
+* batch  | batch             0.62
+* extern | extern            0.62                 860K (0)
+* undefi | OBS_ICV_sing      0.64                       ()
+* 0      | python            0.64             3849732K (0)
+* batch  | batch             0.64
+* extern | extern            0.64                 860K (0)
+* undefi | OBS_ICV_sing      0.64                       ()
+* 0      | python            0.64             3827828K (0)
+* batch  | batch             0.64
+* extern | extern            0.64                 860K (0)
+* undefi | OBS_ICV_sing      0.64                       ()
+* 0      | python            0.64             3806084K (0)
+* batch  | batch             0.64
+* extern | extern            0.64                 860K (0)
+* undefi | OBS_ICV_sing      0.67                       ()
+* 0      | python            0.67             3806764K (0)
+* batch  | batch             0.67
+* extern | extern            0.67                 860K (0)
+* undefi | OBS_ICV_sing      0.65                       ()
+* 0      | python            0.65             3785148K (0)
+* batch  | batch             0.65
+* extern | extern            0.65                 860K (0)
+* undefi | OBS_ICV_sing      0.68                       ()
+* 0      | python            0.67             3763360K (0)
+* batch  | batch             0.68
+* extern | extern            0.68                 860K (0)
+* undefi | OBS_ICV_sing      0.68                       ()
+* 0      | python            0.68             3717868K (0)
+* batch  | batch             0.68
+* extern | extern            0.68                 860K (0)
+* undefi | OBS_ICV_sing       0.7                       ()
+* 0      | python            0.69             3696608K (0)
+* batch  | batch              0.7
+* extern | extern             0.7                 860K (0)
+* undefi | OBS_ICV_sing      0.73                       ()
+* 0      | python            0.73             3674648K (0)
+* batch  | batch             0.73
+* extern | extern            0.73                 860K (0)
+* undefi | OBS_ICV_sing      0.71                       ()
+* 0      | python            0.71             3652924K (0)
+* batch  | batch             0.71
+* extern | extern            0.71                 860K (0)
+* undefi | OBS_ICV_sing      0.72                       ()
+* 0      | python            0.71             3633624K (0)
+* batch  | batch             0.72
+* extern | extern            0.72                 860K (0)
+* undefi | OBS_ICV_sing      0.72                       ()
+* 0      | python            0.72             3633624K (0)
+* batch  | batch             0.72
+* extern | extern            0.72                 860K (0)
+* undefi | OBS_ICV_sing      0.73                       ()
+* 0      | python            0.73             3589708K (0)
+* batch  | batch             0.73
+* extern | extern            0.73                 860K (0)
+* undefi | OBS_ICV_sing      0.74                       ()
+* 0      | python            0.74             3591984K (0)
+* batch  | batch             0.74
+* extern | extern            0.74                 860K (0)
+* undefi | OBS_ICV_sing      0.76                       ()
+* 0      | python            0.75             3546032K (0)
+* batch  | batch             0.76
+* extern | extern            0.76                 860K (0)
+* undefi | OBS_ICV_sing      0.75                       ()
+* 0      | python            0.75             3524092K (0)
+* batch  | batch             0.75
+* extern | extern            0.75                 860K (0)
+* undefi | OBS_ICV_sing      0.77                       ()
+* 0      | python            0.77             3502204K (0)
+* batch  | batch             0.77
+* extern | extern            0.77                 860K (0)
+* undefi | OBS_ICV_sing      0.78                       ()
+* 0      | python            0.78             3480348K (0)
+* batch  | batch             0.78
+* extern | extern            0.78                 860K (0)
+* undefi | OBS_ICV_sing      0.79                       ()
+* 0      | python            0.79             3482156K (0)
+* batch  | batch             0.79
+* extern | extern            0.79                 860K (0)
+* undefi | OBS_ICV_sing      0.82                       ()
+* 0      | python            0.82             3460404K (0)
+* batch  | batch             0.82
+* extern | extern            0.82                 860K (0)
+* undefi | OBS_ICV_sing      0.81                       ()
+* 0      | python            0.81             3438768K (0)
+* batch  | batch             0.81
+* extern | extern            0.81                 860K (0)
+* undefi | OBS_ICV_sing       0.8                       ()
+* 0      | python             0.8             3382608K (0)
+* batch  | batch              0.8
+* extern | extern             0.8                 860K (0)
+* undefi | OBS_ICV_sing      0.81                       ()
+* 0      | python            0.81             3360284K (0)
+* batch  | batch             0.81
+* extern | extern            0.81                 860K (0)
+* undefi | OBS_ICV_sing      0.82                       ()
+* 0      | python            0.82             3338520K (0)
+* batch  | batch             0.82
+* extern | extern            0.82                 860K (0)
+* undefi | OBS_ICV_sing      0.83                       ()
+* 0      | python            0.83             3316768K (0)
+* batch  | batch             0.83
+* extern | extern            0.83                 860K (0)
+* undefi | OBS_ICV_sing      0.83                       ()
+* 0      | python            0.83             3294016K (0)
+* batch  | batch             0.83
+* extern | extern            0.83                 860K (0)
+* undefi | OBS_ICV_sing      0.83                       ()
+* 0      | python            0.83             3272396K (0)
+* batch  | batch             0.83
+* extern | extern            0.83                 860K (0)
+* undefi | OBS_ICV_sing      0.85                       ()
+* 0      | python            0.85             3249748K (0)
+* batch  | batch             0.85
+* extern | extern            0.85                 860K (0)
+* undefi | OBS_ICV_sing      0.85                       ()
+* 0      | python            0.85             3228484K (0)
+* batch  | batch             0.85
+* extern | extern            0.85                 860K (0)
+* undefi | OBS_ICV_sing      0.87                       ()
+* 0      | python            0.87             3206320K (0)
+* batch  | batch             0.87
+* extern | extern            0.87                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             3184432K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing      0.86                       ()
+* 0      | python            0.85             3162616K (0)
+* batch  | batch             0.86
+* extern | extern            0.86                 860K (0)
+* undefi | OBS_ICV_sing      0.86                       ()
+* 0      | python            0.86             3140012K (0)
+* batch  | batch             0.86
+* extern | extern            0.86                 860K (0)
+* undefi | OBS_ICV_sing      0.88                       ()
+* 0      | python            0.88             3126212K (0)
+* batch  | batch             0.88
+* extern | extern            0.88                 860K (0)
+* undefi | OBS_ICV_sing      0.89                       ()
+* 0      | python            0.89             3095488K (0)
+* batch  | batch             0.89
+* extern | extern            0.89                 860K (0)
+* undefi | OBS_ICV_sing      0.89                       ()
+* 0      | python            0.88             3074004K (0)
+* batch  | batch             0.89
+* extern | extern            0.89                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             3051744K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing      0.89                       ()
+* 0      | python            0.89             3030412K (0)
+* batch  | batch             0.89
+* extern | extern            0.89                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             3008524K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             2990860K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing       0.9                       ()
+* 0      | python             0.9             2963848K (0)
+* batch  | batch              0.9
+* extern | extern             0.9                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2941316K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             2919180K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2897468K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* undefi | OBS_ICV_sing       0.9                       ()
+* 0      | python             0.9             2876248K (0)
+* batch  | batch              0.9
+* extern | extern             0.9                 860K (0)
+* undefi | OBS_ICV_sing      0.91                       ()
+* 0      | python            0.91             2854092K (0)
+* batch  | batch             0.91
+* extern | extern            0.91                 860K (0)
+* undefi | OBS_ICV_sing      0.93                       ()
+* 0      | python            0.93             2831632K (0)
+* batch  | batch             0.93
+* extern | extern            0.93                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2809100K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2787432K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* undefi | OBS_ICV_sing      0.94                       ()
+* 0      | python            0.94             2760712K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* undefi | OBS_ICV_sing      0.94                       ()
+* 0      | python            0.94             2738736K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2716724K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* undefi | OBS_ICV_sing      0.93                       ()
+* 0      | python            0.92             2695176K (0)
+* batch  | batch             0.93
+* extern | extern            0.93                 860K (0)
+* undefi | OBS_ICV_sing      0.94                       ()
+* 0      | python            0.94             2672880K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* undefi | OBS_ICV_sing      0.94                       ()
+* 0      | python            0.94             2651156K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* undefi | OBS_ICV_sing      0.93                       ()
+* 0      | python            0.93             2629160K (0)
+* batch  | batch             0.93
+* extern | extern            0.93                 860K (0)
+* undefi | OBS_ICV_sing      0.93                       ()
+* 0      | python            0.93             2607232K (0)
+* batch  | batch             0.93
+* extern | extern            0.93                 860K (0)
+* undefi | OBS_ICV_sing      0.93                       ()
+* 0      | python            0.93             2584512K (0)
+* batch  | batch             0.93
+* extern | extern            0.93                 860K (0)
+* undefi | OBS_ICV_sing      0.94                       ()
+* 0      | python            0.94             2562872K (0)
+* batch  | batch             0.94
+* extern | extern            0.94                 860K (0)
+* undefi | OBS_ICV_sing      0.92                       ()
+* 0      | python            0.92             2540456K (0)
+* batch  | batch             0.92
+* extern | extern            0.92                 860K (0)
+* 0      | python            0.95             2518684K (0)
+* batch  | batch             0.95
+* extern | extern            0.95                 860K (0)
+* ------------------------------------------------------------------------------
+

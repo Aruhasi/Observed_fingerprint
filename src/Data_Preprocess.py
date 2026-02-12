@@ -33,41 +33,42 @@ def preprocess_nan(data):
 # np.roll apply to the longitude dimension with 0-360 degree
 def convert_longitude(data):
     """
-    Convert an array of longitudes from the range 0-360 to -180 to 180.
+    Convert longitudes in an xarray DataArray or Dataset from 0–360 to -180–180.
 
     Parameters:
-    longitudes (np.array): Array of longitudes in degrees (0-360).
+    - data: xarray.DataArray or xarray.Dataset with 'lon' coordinate.
 
     Returns:
-    np.array: Array of converted longitudes in degrees (-180 to 180).
+    - data: Same object with adjusted 'lon' coordinate.
     """
-    # Convert longitudes to -180 to 180
+    data = data.copy()
     data['lon'] = ((data['lon'] + 180) % 360) - 180
-    data = data.sortby(data.lon)
-    return data
-# def adjust_longitude(data, original_lons):
-#     """
-#     Adjust the data array and corresponding longitudes from a 0-360 to a -180 to 180 range.
+    return data.sortby('lon')
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# np.roll apply to the longitude dimension with 0-360 degree
+def adjust_longitude(data, original_lons):
+    """
+    Adjust the data array and corresponding longitudes from a 0-360 to a -180 to 180 range.
     
-#     Parameters:
-#     - data: 2D numpy array with shape (latitude, longitude)
-#     - original_lons: 1D numpy array of longitudes from 0 to 360
+    Parameters:
+    - data: 2D numpy array with shape (latitude, longitude)
+    - original_lons: 1D numpy array of longitudes from 0 to 360
     
-#     Returns:
-#     - data_rolled: The data array adjusted so longitudes range from -180 to 180
-#     - lons_adjusted: The adjusted longitude array from -180 to 180
-#     """
-#     # Calculate the index where we need to split and roll the array
-#     shift_index = len(original_lons) // 2
+    Returns:
+    - data_rolled: The data array adjusted so longitudes range from -180 to 180
+    - lons_adjusted: The adjusted longitude array from -180 to 180
+    """
+    # Calculate the index where we need to split and roll the array
+    shift_index = len(original_lons) // 2
 
-#     # Roll the data array to shift the longitudes
-#     data_rolled = np.roll(data, shift=shift_index, axis=1)
+    # Roll the data array to shift the longitudes
+    data_rolled = np.roll(data, shift=shift_index, axis=1)
 
-#     # Roll the longitude array and adjust values to be within -180 to 180
-#     lons_rolled = np.roll(original_lons, shift=shift_index)
-#     lons_rolled[lons_rolled >= 180] -= 360
+    # Roll the longitude array and adjust values to be within -180 to 180
+    lons_rolled = np.roll(original_lons, shift=shift_index)
+    lons_rolled[lons_rolled >= 180] -= 360
 
-#     return data_rolled
+    return data_rolled, lons_rolled
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 from scipy.signal.windows import lanczos
 """

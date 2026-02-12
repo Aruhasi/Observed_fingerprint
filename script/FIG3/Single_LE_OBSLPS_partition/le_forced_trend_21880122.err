@@ -1,0 +1,2 @@
+/home/m/m301036/.conda/envs/mykernel/lib/python3.9/site-packages/xarray/conventions.py:232: SerializationWarning: variable realization has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(

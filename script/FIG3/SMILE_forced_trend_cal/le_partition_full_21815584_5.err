@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/SMILE_forced_trend_cal/LE_forced_trend_cal_MMEM.py", line 156, in <module>
+    ds_out = process_ensmean_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/SMILE_forced_trend_cal/LE_forced_trend_cal_MMEM.py", line 79, in process_ensmean_forced
+    raise FileNotFoundError(f"Input file not found: {in_file}")
+FileNotFoundError: Input file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/LE_data/ENS//_annual_ano_ensemble_mean_1950_2022.nc
+srun: error: l30295: task 0: Exited with exit code 1
+srun: Terminating StepId=21815595.0

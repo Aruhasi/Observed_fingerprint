@@ -1,0 +1,115 @@
+Computing SMILE internal variability for model: CESM2
+[rank 3] MPI world size = 20
+[rank 3] Running SMILE internal variability for model: CESM2
+[rank 6] MPI world size = 20
+[rank 6] Running SMILE internal variability for model: CESM2
+[rank 18] MPI world size = 20
+[rank 18] Running SMILE internal variability for model: CESM2
+[rank 0] MPI world size = 20
+[rank 0] Running SMILE internal variability for model: CESM2
+[rank 1] MPI world size = 20
+[rank 1] Running SMILE internal variability for model: CESM2
+[rank 2] MPI world size = 20
+[rank 2] Running SMILE internal variability for model: CESM2
+[rank 4] MPI world size = 20
+[rank 4] Running SMILE internal variability for model: CESM2
+[rank 5] MPI world size = 20
+[rank 5] Running SMILE internal variability for model: CESM2
+[rank 7] MPI world size = 20
+[rank 7] Running SMILE internal variability for model: CESM2
+[rank 8] MPI world size = 20
+[rank 8] Running SMILE internal variability for model: CESM2
+[rank 9] MPI world size = 20
+[rank 9] Running SMILE internal variability for model: CESM2
+[rank 10] MPI world size = 20
+[rank 10] Running SMILE internal variability for model: CESM2
+[rank 11] MPI world size = 20
+[rank 11] Running SMILE internal variability for model: CESM2
+[rank 12] MPI world size = 20
+[rank 12] Running SMILE internal variability for model: CESM2
+[rank 13] MPI world size = 20
+[rank 13] Running SMILE internal variability for model: CESM2
+[rank 14] MPI world size = 20
+[rank 14] Running SMILE internal variability for model: CESM2
+[rank 15] MPI world size = 20
+[rank 15] Running SMILE internal variability for model: CESM2
+[rank 16] MPI world size = 20
+[rank 16] Running SMILE internal variability for model: CESM2
+[rank 17] MPI world size = 20
+[rank 17] Running SMILE internal variability for model: CESM2
+[rank 19] MPI world size = 20
+[rank 19] Running SMILE internal variability for model: CESM2
+[rank 1] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 17] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 2] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 15] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 4] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 3] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 10] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 13] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 11] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 9] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 6] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 7] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 16] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 18] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 5] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 8] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 12] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 14] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 0] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 19] CESM2 members: using variable 'TREFHT' as 'tas'
+[rank 16] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 1] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 15] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 17] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 0] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 8] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 10] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 14] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 2] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 4] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 3] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 11] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 13] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 6] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 12] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 18] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 19] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 5] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 7] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+[rank 9] CESM2 ENS mean: using variable 'TREFHT' as 'tas'
+Finished model: CESM2
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21812202
+* JobName          : smile_noise                                       
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l40358 (1)                                                
+* Submit date      : 2026-01-04T08:56:00
+* Start time       : 2026-01-04T08:56:28
+* End time         : 2026-01-04T08:56:47
+* Elapsed time     : 00:00:19 (Timelimit=06:00:00)                     
+* Command          : ./SMILE_ICV.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    SMILE_ICV_std_cal
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr    0.0053             4264984K (0)
+* batch  | batch           0.0053
+* extern | extern          0.0053                 860K (0)
+* ------------------------------------------------------------------------------
+

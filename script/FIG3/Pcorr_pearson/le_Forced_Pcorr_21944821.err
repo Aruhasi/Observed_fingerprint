@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+Traceback (most recent call last):
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 258, in <module>
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 2] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 3] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 4] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 6] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 7] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 9] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 0] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 1] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    tas_mem, forced_trend = load_members_and_forced(model)
+  File "/work/mh0033/m301036/OBS_LPS_revision/script/FIG3/Pcorr_pearson/OBS_LPS_vs_SMILE_forced_Pcorr.py", line 131, in load_members_and_forced
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 8] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc
+    raise FileNotFoundError(f"[rank {rank}] Members file not found: {mem_file}")
+FileNotFoundError: [rank 5] Members file not found: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/CESM2/forced_CESM2_MK_trend_1950-2022_sliding.nc

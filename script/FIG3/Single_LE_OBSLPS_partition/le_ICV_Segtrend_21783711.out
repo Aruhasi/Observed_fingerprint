@@ -1,0 +1,95 @@
+Running segmented ICV trends for model = EC_Earth3
+SLURM_NTASKS = 20
+[rank 5] MPI world size = 20
+[rank 0] MPI world size = 20
+[rank 6] MPI world size = 20
+[rank 1] MPI world size = 20
+[rank 7] MPI world size = 20
+[rank 3] MPI world size = 20
+[rank 8] MPI world size = 20
+[rank 4] MPI world size = 20
+[rank 9] MPI world size = 20
+[rank 2] MPI world size = 20
+[rank 10] MPI world size = 20
+[rank 11] MPI world size = 20
+[rank 3] Processing run 5
+[rank 4] Processing run 6
+[rank 4] Processing run 6 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 0] Processing run 1
+[rank 0] Processing run 1 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 1] Processing run 3
+[rank 1] Processing run 3 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 2] Processing run 4
+[rank 2] Processing run 4 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 3] Processing run 5 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 12] MPI world size = 20
+[rank 13] MPI world size = 20
+[rank 15] MPI world size = 20
+[rank 14] MPI world size = 20
+[rank 16] MPI world size = 20
+[rank 17] MPI world size = 20
+[rank 18] MPI world size = 20
+[rank 5] Processing run 7
+[rank 19] MPI world size = 20
+[rank 6] Processing run 8
+[rank 6] Processing run 8 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 7] Processing run 9
+[rank 7] Processing run 9 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 5] Processing run 7 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 8] Processing run 10
+[rank 8] Processing run 10 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 9] Processing run 11
+[rank 9] Processing run 11 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 16] Processing run 18
+[rank 16] Processing run 18 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 18] Processing run 20
+[rank 18] Processing run 20 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 19] Processing run 21
+[rank 19] Processing run 21 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 15] Processing run 17
+[rank 17] Processing run 19
+[rank 15] Processing run 17 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 17] Processing run 19 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 10] Processing run 12
+[rank 13] Processing run 15
+[rank 13] Processing run 15 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 10] Processing run 12 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 14] Processing run 16
+[rank 14] Processing run 16 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 11] Processing run 13
+[rank 12] Processing run 14
+[rank 11] Processing run 13 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+[rank 12] Processing run 14 from /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/EC_Earth3/SAT_anomaly_partition_wrt_EC_Earth3_ENS_GSAT_1850-2022.nc
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21783711
+* JobName          : ICV_seg                                           
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l[40334,40337,40341,40347] (4)                            
+* Submit date      : 2026-01-02T18:03:57
+* Start time       : 2026-01-02T18:03:58
+* End time         : 2026-01-03T02:04:05
+* Elapsed time     : 08:00:07 (Timelimit=08:00:00)                     
+* Command          : ./SMILEs_Segmented_ICV_trend_model_cal.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Single_LE_OBSLPS_partition
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr   3.2e+01             2470620K (1)
+* batch  | batch          3.2e+01
+* extern | extern         3.2e+01                3820K (2)
+* ------------------------------------------------------------------------------
+

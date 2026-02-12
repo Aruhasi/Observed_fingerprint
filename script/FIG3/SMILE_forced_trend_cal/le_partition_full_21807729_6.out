@@ -1,0 +1,63 @@
+Running model: MIROC6
+[rank 0] MPI world size = 1
+[rank 0] This node is running model: MIROC6
+[rank 0] Processing ensemble mean from /work/mh0033/m301036/OBS_LPS_revision/docs/data/LE_data/ENS/MIROC6_annual_ano_ensemble_mean_1950_2022.nc
+[rank 0] Writing final output: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/MIROC6/SMILE_forced/MIROC6_ENSmean_forced_MK_trend_1950-2022_sliding.nc
+[rank 0] Output dimensions: period=64, lat=90, lon=180
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21807729
+* JobName          : le_partition_full                                 
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l40618 (1)                                                
+* Submit date      : 2026-01-04T01:12:45
+* Start time       : 2026-01-04T01:13:05
+* End time         : 2026-01-04T01:37:40
+* Elapsed time     : 00:24:35 (Timelimit=08:00:00)                     
+* Command          : ./SMILEs_Cal.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    SMILE_forced_trend_cal
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* undefi | le_partition      0.41                       ()
+* 0      | python            0.41              296052K (0)
+* batch  | batch             0.41
+* extern | extern            0.41                 860K (0)
+* undefi | le_partition   4.2e+01                       ()
+* 0      | python         4.2e+01                       ()
+* batch  | batch          4.2e+01
+* extern | extern         4.2e+01                       ()
+* undefi | le_partition      0.41                       ()
+* 0      | python            0.41              296136K (0)
+* batch  | batch             0.41
+* extern | extern            0.41                 860K (0)
+* undefi | le_partition   4.2e+01                       ()
+* 0      | python         4.2e+01                       ()
+* batch  | batch          4.2e+01
+* extern | extern         4.2e+01                       ()
+* undefi | le_partition      0.41                       ()
+* 0      | python            0.41              296040K (0)
+* batch  | batch             0.41
+* extern | extern            0.41                 860K (0)
+* undefi | le_partition   4.2e+01                       ()
+* 0      | python         4.2e+01                       ()
+* batch  | batch          4.2e+01
+* extern | extern         4.2e+01                       ()
+* 0      | python         4.2e+01                       ()
+* batch  | batch          4.2e+01
+* extern | extern         4.2e+01                       ()
+* ------------------------------------------------------------------------------
+

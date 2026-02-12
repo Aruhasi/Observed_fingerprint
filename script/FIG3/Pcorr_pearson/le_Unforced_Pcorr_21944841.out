@@ -1,0 +1,119 @@
+Running segmented ICV trends for model = CanESM5
+SLURM_NTASKS = 10
+[rank 0] MPI world size = 10
+[rank 0] Model: CanESM5
+[rank 0] Observed internal trend file: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/OBS_ICV_std/concatenate/OBS_ICV_MK_trend_STD_1950_2022_sliding.nc
+[rank 1] MPI world size = 10
+[rank 1] Model: CanESM5
+[rank 2] MPI world size = 10
+[rank 2] Model: CanESM5
+[rank 3] MPI world size = 10
+[rank 3] Model: CanESM5
+[rank 4] MPI world size = 10
+[rank 4] Model: CanESM5
+[rank 5] MPI world size = 10
+[rank 5] Model: CanESM5
+[rank 6] MPI world size = 10
+[rank 6] Model: CanESM5
+[rank 7] MPI world size = 10
+[rank 7] Model: CanESM5
+[rank 8] MPI world size = 10
+[rank 8] Model: CanESM5
+[rank 9] MPI world size = 10
+[rank 9] Model: CanESM5
+[rank 0] tas_mem dims: ('period', 'run', 'lat', 'lon'), internal_trend dims: ('period', 'lat', 'lon')
+[rank 1] Processing run index 1 (run=2)
+[rank 2] Processing run index 2 (run=3)
+[rank 3] Processing run index 3 (run=4)
+[rank 4] Processing run index 4 (run=5)
+[rank 5] Processing run index 5 (run=6)
+[rank 6] Processing run index 6 (run=7)
+[rank 7] Processing run index 7 (run=8)
+[rank 8] Processing run index 8 (run=9)
+[rank 9] Processing run index 9 (run=10)
+[rank 0] Processing run index 0 (run=1)
+[rank 2] Processing run index 12 (run=13)
+[rank 5] Processing run index 15 (run=16)
+[rank 0] Processing run index 10 (run=11)
+[rank 3] Processing run index 13 (run=14)
+[rank 9] Processing run index 19 (run=20)
+[rank 7] Processing run index 17 (run=18)
+[rank 1] Processing run index 11 (run=12)
+[rank 4] Processing run index 14 (run=15)
+[rank 8] Processing run index 18 (run=19)
+[rank 6] Processing run index 16 (run=17)
+[rank 2] Processing run index 22 (run=23)
+[rank 7] Processing run index 27 (run=28)
+[rank 0] Processing run index 20 (run=21)
+[rank 5] Processing run index 25 (run=26)
+[rank 9] Processing run index 29 (run=30)
+[rank 8] Processing run index 28 (run=29)
+[rank 1] Processing run index 21 (run=22)
+[rank 6] Processing run index 26 (run=27)
+[rank 3] Processing run index 23 (run=24)
+[rank 4] Processing run index 24 (run=25)
+[rank 2] Processing run index 32 (run=33)
+[rank 7] Processing run index 37 (run=38)
+[rank 5] Processing run index 35 (run=36)
+[rank 0] Processing run index 30 (run=31)
+[rank 1] Processing run index 31 (run=32)
+[rank 3] Processing run index 33 (run=34)
+[rank 8] Processing run index 38 (run=39)
+[rank 9] Processing run index 39 (run=40)
+[rank 6] Processing run index 36 (run=37)
+[rank 4] Processing run index 34 (run=35)
+[rank 2] Processing run index 42 (run=43)
+[rank 0] Processing run index 40 (run=41)
+[rank 9] Processing run index 49 (run=50)
+[rank 5] Processing run index 45 (run=46)
+[rank 4] Processing run index 44 (run=45)
+[rank 7] Processing run index 47 (run=48)
+[rank 3] Processing run index 43 (run=44)
+[rank 6] Processing run index 46 (run=47)
+[rank 1] Processing run index 41 (run=42)
+[rank 8] Processing run index 48 (run=49)
+[rank 0] Writing output: /work/mh0033/m301036/OBS_LPS_revision/docs/data/FIG3/Pattern_correlation_pearson/CanESM5/CanESM5_ICVstd_pattern_correlation_run_and_obs_vs_MMEM_1950-2022_sliding.nc
+[rank 0] Done. Output dims: run=50, period=64
+[rank 1] Finished.
+[rank 2] Finished.
+[rank 3] Finished.
+[rank 4] Finished.
+[rank 6] Finished.
+[rank 7] Finished.
+[rank 8] Finished.
+[rank 9] Finished.
+[rank 5] Finished.
+
+********************************************************************************
+*                                                                              *
+*  This is the automated job summary provided by DKRZ.                         *
+*  If you encounter problems, need assistance or have any suggestion, please   *
+*  write an email to                                                           *
+*                                                                              *
+*  --  support@dkrz.de --                                                      *
+*                                                                              *
+*                       We hope you enjoyed the DKRZ supercomputer LEVANTE ... *
+*
+* JobID            : 21944841
+* JobName          : Unforced_Pcorr                                    
+* Account          : mh0033
+* User             : m301036 (40188), mpioes (2100)                    
+* Partition        : compute
+* QOS              : normal
+* Nodelist         : l40441 (1)                                                
+* Submit date      : 2026-01-11T20:53:46
+* Start time       : 2026-01-11T20:54:21
+* End time         : 2026-01-11T20:54:45
+* Elapsed time     : 00:00:24 (Timelimit=08:00:00)                     
+* Command          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Pcorr_pearson/Internal_Pcorr_cal.sh
+* WorkDir          : /work/mh0033/m301036/OBS_LPS_revision/script/FIG3/
+*                    Pcorr_pearson
+*
+* StepID | JobName      NodeHours    MaxRSS [Byte] (@task)
+* ------------------------------------------------------------------------------
+* 0      | hydra_pmi_pr    0.0067             2406368K (0)
+* batch  | batch           0.0067
+* extern | extern          0.0067                3756K (0)
+* ------------------------------------------------------------------------------
+
