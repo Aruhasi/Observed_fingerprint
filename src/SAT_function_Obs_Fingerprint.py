@@ -51,20 +51,7 @@ def calc_anom_1981_2010(data):
     climatology = data.sel(time=slice('1981-01-01', '2010-12-31')).groupby('time.month').mean(dim='time')
     data_anom = data.groupby('time.month') - climatology
     return data_anom
-# calculate the weighted mean of the global land surface temperature
-# def calc_weighted_mean(data, lat, lon):
-#     """
-#     Calculate the weighted mean of a dataset.
-#     """
-#     data_ma = ma.masked_invalid(data)
-#     # weights matrix
-#     # weights = np.cos(np.deg2rad(data.lat))
-#     weights = np.cos(np.deg2rad(lat))[:, None]
-#     # weights = np.cos(np.tile(abs(lat[:,None])*np.pi/180,(1,len(lon))))[np.newaxis,...] #(time,lat,lon)
-#     weighted_data = data_ma*weights
-    
-#     data_weighted_mean = np.nanmean(weighted_data, axis=(1,2)) 
-#     return data_weighted_mean
+
 def selreg(var, lat, lon, lat1, lat2, lon1, lon2):
     """
     Select a region
@@ -203,33 +190,6 @@ def interpolate_nan_1D(data):
     
     interpolated_data = np.interp(times, times[valid_mask], data[valid_mask])
     return interpolated_data
-
-# def apply_mannkendall_3D_interpolated(data):
-#     """
-#     Apply the Mann-Kendall test to a 3D dataset after interpolating NaN values.
-#     """
-#     # Derive the lat_length and lon_length from the data's shape
-#     _, lat_length, lon_length = data.shape
-    
-#     # Initialize the output arrays
-#     p_values = np.empty((lat_length, lon_length))
-#     slope_values = np.empty((lat_length, lon_length))
-    
-#     # Loop over the latitudes and longitudes
-#     for lat_idx in range(lat_length):
-#         for lon_idx in range(lon_length):
-#             # Select the data at the current latitude and longitude
-#             data_lat_lon = data[:, lat_idx, lon_idx]
-            
-#             # Interpolate NaN values
-#             data_lat_lon_interpolated = interpolate_nan_1D(data_lat_lon)
-            
-#             # Apply the Mann-Kendall test
-#             result = mk.original_test(data_lat_lon_interpolated, alpha=0.05)
-#             p_values[lat_idx, lon_idx] = result[2]
-#             slope_values[lat_idx, lon_idx] = result[7]
-            
-#     return slope_values, p_values
 # =============================================================================
 # define one dimension mann-kendall test
 def apply_mannkendall(data):

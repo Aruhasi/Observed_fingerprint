@@ -127,21 +127,3 @@ def apply_lanczos_filter(data, window, cutoff):
     filter = lanczos_filter(window, cutoff)
     filtered_data = np.convolve(data, filter, mode='same')
     return filtered_data
-
-def apply_lanczos_filter_3d(data, window, cutoff):
-    # Assuming data is a 3D numpy array with dimensions [time, lat, lon]
-    filtered_data = np.empty_like(data)
-
-    # Iterate over each spatial point
-    for lat in range(data.shape[1]):
-        for lon in range(data.shape[2]):
-            # Extract the time series for this point
-            time_series = data[:, lat, lon]
-
-            # Apply the 1D filter to this time series
-            filtered_time_series = np.convolve(time_series, lanczos_filter(window,cutoff), mode='same')
-
-            # Store the filtered time series back into the 3D array
-            filtered_data[:, lat, lon] = filtered_time_series
-
-    return filtered_data

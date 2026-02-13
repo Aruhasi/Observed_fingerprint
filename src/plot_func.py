@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 from cycler import cycler
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # --- Physical figure size presets (inches) ---
 SCIADV_1COL = (3.55, 3.55*1.1)   # width, height (you can tweak height)
@@ -255,12 +256,6 @@ def plot_data_PlateCarree(data, lats, lons, levels=None, extend=None, cmap=None,
     ax.set_title(title, loc='center', fontsize=22, pad=5.0)
     return cf
 # ===================================================================
-import matplotlib.pyplot as plt
-import numpy as np
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-import cartopy.mpl.ticker as cticker
-
 def draw_longitude_labels(ax, ticks=np.arange(60, 301, 60)):
     for lon in ticks:
         label = f"{lon}°E" if lon <= 180 else f"{360 - lon}°W"
@@ -326,41 +321,6 @@ def add_circular_boundary(ax, radius=0.5, n_points=200):
     # Apply as the boundary for the GeoAxes
     ax.set_boundary(circle_path, transform=ax.transAxes)
 # ====================================================================
-# def NH_plot_data(data, lats, lons, levels=None, extend=None, cmap=None, norm=None, title="", ax=None):
-#     if ax is None:
-#         fig, ax = plt.subplots(subplot_kw={'projection': ccrs.NorthPolarStereo()})
-    
-#     # 1) create axes if needed
-#     if ax is None:
-#         fig, ax = plt.subplots(
-#             subplot_kw={'projection': ccrs.NorthPolarStereo()}
-#         )
-
-#     # 2) plot your data & coastlines
-#     ax.coastlines(resolution='110m', linewidth=0.5)
-#     cf = ax.contourf(
-#         lons, lats, data,
-#         levels=levels, extend=extend,
-#         cmap=cmap, norm=norm,
-#         transform=ccrs.PlateCarree()
-#     )
-
-#     # 3) title
-#     ax.set_title(title, fontsize=14, pad=5)
-
-#     # 4) circular boundary clip
-#     add_circular_boundary(ax)
-
-#     # 5) gridlines (customize as you like)
-#     gl = ax.gridlines(
-#         crs=ccrs.PlateCarree(), draw_labels=False,
-#         linewidth=1, color='c', linestyle='--'
-#     )
-#     gl.xlocator = mticker.FixedLocator([-180, -90, 0, 90, 180])
-#     gl.ylocator = mticker.FixedLocator([30, 60, 90])
-
-#     return cf
-# ====================================================================
 def NH_plot_data(data, lats, lons, levels=None, extend=None, cmap=None, norm=None, title="", ax=None, use_pcolormesh=False):
     if ax is None:
         fig, ax = plt.subplots(subplot_kw={'projection':ccrs.AzimuthalEquidistant(central_longitude=180.0, central_latitude=90.0)})
@@ -392,26 +352,9 @@ def NH_plot_data(data, lats, lons, levels=None, extend=None, cmap=None, norm=Non
     gl.xlocator = mticker.FixedLocator([-90,0,90,180])
     gl.xlines = False
     gl.ylocator = mticker.FixedLocator([0, 30, 65])
-    # gl = ax.gridlines(draw_labels=True, dms=True, x_inline=False, y_inline=False,
-    #                   color='gray', alpha=0.35, linestyle='--')
-
-    # # Disable labels on the top and right of the plot
-    # gl.top_labels = False
-    # gl.right_labels = False
-
-    # # Enable labels on the bottom and left of the plot
-    # gl.bottom_labels = show_xticks
-    # gl.left_labels = show_yticks
-    # gl.xformatter = cticker.LongitudeFormatter()
-    # gl.yformatter = cticker.LatitudeFormatter()
-    # gl.xlabel_style = {'size': 18}
-    # gl.ylabel_style = {'size': 18}
     
     return cf
 # ====================================================================
-import cartopy.crs as ccrs
-import cartopy.mpl.ticker as mticker
-import numpy as np
 def plot_SH_panel(
     plot_cells, MODELS, SCEN_COLS,
     levels, cmap, pkw,
@@ -522,84 +465,6 @@ def plot_data_Orthographic(data, lats, lons, levels=None, extend=None, cmap=None
     # Title
     ax.set_title(title, fontsize=16, pad=10)
     return cf
-# ====================================================================
-# def add_circular_boundary(ax, radius=0.5, n_points=200):
-#     """
-#     Clip the given GeoAxes to a circle in Axes-fraction coordinates.
-#     """
-#     theta = np.linspace(0, 2*np.pi, n_points)
-#     verts = np.vstack([
-#         0.5 + radius * np.sin(theta),
-#         0.5 + radius * np.cos(theta)
-#     ]).T
-#     circle_path = Path(verts)
-#     ax.set_boundary(circle_path, transform=ax.transAxes)
-
-
-# def plot_sia_north_pole(sia, lons, lats, ax=None,
-#                         boundary_lat=66.5, cmap='Blues',
-#                         vmin=None, vmax=None, **pcol_kwargs):
-#     """
-#     Plot a 2D SIA field on a North-Polar Stereographic projection,
-#     clipped to latitude ≥ boundary_lat.
-    
-#     Parameters
-#     ----------
-#     sia : 2D array-like (j×i)
-#         Sea-ice area (or fraction) field.
-#     lons, lats : 2D array-like (j×i)
-#         The longitude and latitude coordinates for sia.
-#     ax : GeoAxes (optional)
-#         If None, a new GeoAxes with NorthPolarStereo() is created.
-#     boundary_lat : float
-#         Latitude (°N) of the circular outline (default 66.5).
-#     cmap, vmin, vmax : passed to pcolormesh.
-#     **pcol_kwargs : additional keyword args for pcolormesh.
-    
-#     Returns
-#     -------
-#     mesh : QuadMesh
-#         The result of ax.pcolormesh(...).
-#     """
-#     # 1) Set up the polar stereographic axes
-#     if ax is None:
-#         fig = plt.gcf()
-#         ax = fig.add_subplot(1,1,1, projection=ccrs.NorthPolarStereo())
-    
-#     # 2) Clip to a circle that corresponds roughly to boundary_lat
-#     #    radius in axes coords = sin(90° - boundary_lat)
-#     radius = np.sin(np.deg2rad(90 - boundary_lat))
-#     add_circular_boundary(ax, radius=radius)
-    
-#     # 3) Limit the view extents to boundary_lat–90°N
-#     ax.set_extent([-180, 180, boundary_lat, 90], ccrs.PlateCarree())
-    
-#     # 4) Plot the data
-#     mesh = ax.pcolormesh(
-#         lons, lats, sia,
-#         transform=ccrs.PlateCarree(),
-#         cmap=cmap, vmin=vmin, vmax=vmax,
-#         **pcol_kwargs
-#     )
-    
-#     # 5) Draw the 66.5° N outline explicitly
-#     theta = np.linspace(0, 2*np.pi, 361)
-#     circle_lons = np.degrees(theta) - 180  # from -180 to +180 for PlateCarree
-#     circle_lats = np.full_like(theta, boundary_lat)
-#     ax.plot(
-#         circle_lons, circle_lats,
-#         transform=ccrs.PlateCarree(),
-#         color='k', linewidth=1
-#     )
-    
-#     # 6) Add coastlines (optional—you can style further)
-#     ax.coastlines()
-    
-#     return mesh
-import numpy as np
-import cartopy.crs as ccrs
-import matplotlib.path as mpath
-import matplotlib.pyplot as plt
 
 def add_circular_boundary(ax, radius=0.5, n_points=200):
     theta = np.linspace(0, 2*np.pi, n_points)
