@@ -8,7 +8,6 @@ import os
 import sys
 import warnings
 warnings.filterwarnings("ignore")
-
 # In[2]:
 # input pattern correlation from NetCDF files:
 def read_correlations(file_path):
@@ -211,6 +210,7 @@ MMEM_corr = build_mmem_obs_corr(forced_obs_corr, agg='mean')
 MMEM_unforced_corr = build_mmem_obs_corr(unforced_obs_corr, agg='mean')
 # In[7]:
 MMEM_corr, MMEM_unforced_corr
+
 # %%
 # INPUT the MMEM_corr and MMEM_unforced_corr values manually
 MMEM_corr = {'2013-2022': [0.81], '1993-2022': [0.85], '1963-2022': [0.87], '1979-2022': [0.87]}
@@ -281,6 +281,132 @@ print(bias_fraction_icv)
 # %%
 # calculate the global mean values
 mean_ratio_ICV = bias_fraction_icv.sel(period="1993-2022", trend_length=30)
+# %%
+# # ============================================================
+# STIPPLING CODE FOR FIG. 3C / 3D
+# Criterion:
+#   stipple where |MMLE - OBS| > 95% OBS-LPS error envelope
+# Here the 95% envelope is approximated from the saved CI:
+#   threshold = max(|CI_lower|, |CI_upper|)
+# ============================================================
+import os
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+
+# -------------------------------------------------------------------
+# 1. Load perfect-model error statistics
+# -------------------------------------------------------------------
+ERROR_STATS_DIR = "/work/mh0033/m301036/OBS_LPS_revision/docs/data/Revision_check/spatial_error_analysis/"
+
+forced_err_stats = xr.open_dataset(
+    os.path.join(ERROR_STATS_DIR, "forced_error_stats_30-year_1993-2022.nc")
+)
+icv_err_stats = xr.open_dataset(
+    os.path.join(ERROR_STATS_DIR, "icv_error_stats_30-year_1993-2022.nc")
+)
+# -------------------------------------------------------------------
+# 2. Define the model–observation differences to be evaluated
+#    Forced panel C:
+#       pattern_diff = MMLE_forced - OBS_forced
+#    ICV panel D:
+#       ICV_diff = MMLE_internal_std - OBS_internal_std
+# -------------------------------------------------------------------
+forced_delta_30 = pattern_diff.sel(period="1993-2022")
+icv_delta_30 = ICV_diff.sel(period="1993-2022", trend_length=30)
+# -------------------------------------------------------------------
+# 3. Interpolate the 95% OBS-LPS error interval onto the target grids
+# -------------------------------------------------------------------
+forced_ci_lower = forced_err_stats["error_ci_lower"].interp_like(forced_delta_30)
+forced_ci_upper = forced_err_stats["error_ci_upper"].interp_like(forced_delta_30)
+
+icv_ci_lower = icv_err_stats["error_ci_lower"].interp_like(icv_delta_30)
+icv_ci_upper = icv_err_stats["error_ci_upper"].interp_like(icv_delta_30)
+
+# -------------------------------------------------------------------
+# 4. Build masks for stippling
+#
+# Option A: stipple where MMLE–OBS differences EXCEED the 95% OBS-LPS error range
+#           -> robust discrepancy not explained by method uncertainty
+# -------------------------------------------------------------------
+forced_stipple_mask = (forced_delta_30 < forced_ci_lower) | (forced_delta_30 > forced_ci_upper)
+icv_stipple_mask = (icv_delta_30 < icv_ci_lower) | (icv_delta_30 > icv_ci_upper)
+
+# -------------------------------------------------------------------
+# Option B: if instead you want to stipple where differences are WITHIN the
+#           95% OBS-LPS error range, use the following lines instead:
+#
+# forced_stipple_mask = (forced_delta_30 >= forced_ci_lower) & (forced_delta_30 <= forced_ci_upper)
+# icv_stipple_mask    = (icv_delta_30    >= icv_ci_lower)    & (icv_delta_30    <= icv_ci_upper)
+# -------------------------------------------------------------------
+# -------------------------------------------------------------------
+# 4. Helper to plot stippling on cartopy axes
+# -------------------------------------------------------------------
+def get_lat_lon_names(da):
+    lat_name = None
+    lon_name = None
+    for cand in ["lat", "latitude", "y"]:
+        if cand in da.coords:
+            lat_name = cand
+            break
+    for cand in ["lon", "longitude", "x"]:
+        if cand in da.coords:
+            lon_name = cand
+            break
+    if lat_name is None or lon_name is None:
+        raise ValueError("Could not infer lat/lon coordinate names.")
+    return lat_name, lon_name
+
+def add_stippling(ax, mask_da, step=3, size=4, color='k', alpha=0.55):
+    """
+    Add stippling where mask_da == True.
+    Works for 1D or 2D lat/lon coords.
+    step: subsampling interval to reduce clutter
+    """
+    lat_name, lon_name = get_lat_lon_names(mask_da)
+
+    mask = mask_da.values.astype(bool)
+    lat = mask_da[lat_name].values
+    lon = mask_da[lon_name].values
+
+    # Case 1: regular 1D lat/lon grid
+    if lat.ndim == 1 and lon.ndim == 1:
+        lon2d, lat2d = np.meshgrid(lon, lat)
+    else:
+        # Case 2: curvilinear 2D coords
+        lon2d, lat2d = lon, lat
+
+    # subsample
+    mask_sub = mask[::step, ::step]
+    lon_sub = lon2d[::step, ::step]
+    lat_sub = lat2d[::step, ::step]
+
+    ax.scatter(
+        lon_sub[mask_sub],
+        lat_sub[mask_sub],
+        s=size,
+        c=color,
+        alpha=alpha,
+        linewidths=0,
+        transform=ccrs.PlateCarree(),
+        zorder=6,
+    )
+
+# -------------------------------------------------------------------
+# 5. Example: apply stippling to your existing Fig. 3C / 3D panels
+#    Insert these lines INSIDE create_figure(), after the p_forced / p_icv plot
+# -------------------------------------------------------------------
+
+# ===== FOR PANEL C =====
+# add_stippling(ax_forced_map, forced_stipple_mask, step=3, size=4, color='k', alpha=0.5)
+
+# ===== FOR PANEL D =====
+# add_stippling(ax_icv_map, icv_stipple_mask, step=3, size=4, color='k', alpha=0.5)
+
+# -------------------------------------------------------------------
+# 6. Full replacement snippets for the two map panels inside create_figure()
+# -------------------------------------------------------------------
 # %%
 # ============================================================================
 # PLOTTING FUNCTION - Create two versions (with and without 1979-2022)
@@ -426,7 +552,6 @@ def create_figure(include_1979=False):
         frameon=False,
         columnspacing=0.5,
     )
-
     # -------------------- Subplot c: Forced Minus MMEM Map --------------------
     ax_forced_map = plt.subplot(gs[1, 0], projection=ccrs.Robinson(central_longitude=180))
     ax_forced_map.coastlines(resolution='110m')
@@ -442,9 +567,7 @@ def create_figure(include_1979=False):
     gl.xlocator = mticker.FixedLocator([-180, -120, -60, 0, 60, 120])
 
     levels_forced = np.arange(-0.5, 0.55, 0.05)
-    n_bins = len(levels_forced) - 1
-
-    norm_forced = BoundaryNorm(boundaries=levels_forced, ncolors=n_bins)
+    norm_forced = BoundaryNorm(boundaries=levels_forced, ncolors=len(levels_forced)-1)
     cmap_forced = "RdBu_r"
 
     p_forced = pattern_diff.sel(period="1993-2022").plot(
@@ -456,11 +579,14 @@ def create_figure(include_1979=False):
         add_colorbar=False
     )
 
+    # ---- add stippling where |MMLE - OBS| > 95% OBS-LPS error ----
+    # Make stipple more distinct: larger size, higher alpha, white edge
+    add_stippling(ax_forced_map, forced_stipple_mask, step=2, size=10, color='k', alpha=0.75)
+
     ax_forced_map.text(-0.12, 1.2, "C", transform=ax_forced_map.transAxes, fontsize=34, fontweight='bold', va='top')
     ax_forced_map.set_title("MMLE - OBS\n(1993-2022)", fontsize=28, pad=10, loc='center')
     ax_forced_map.text(0.95, 1.05, f"{mean_ratio:.0f}%", fontsize=28, ha='center', va='center',
                        transform=ax_forced_map.transAxes)
-
     cbar_ax_forced = fig.add_axes([0.175, 0.1, 0.25, 0.02])
     cbar_forced = plt.colorbar(
         p_forced,
@@ -472,7 +598,7 @@ def create_figure(include_1979=False):
     cbar_forced.set_label("Externally forced SAT differences\n(°C per decade)", fontsize=24, labelpad=10, loc='center')
     cbar_forced.ax.tick_params(labelsize=22)
     cbar_forced.ax.tick_params(direction='out', length=10, width=2)
-
+    
     # -------------------- Subplot d: ICV Minus MMEM Map --------------------
     ax_icv_map = plt.subplot(gs[1, 1], projection=ccrs.Robinson(central_longitude=180))
     ax_icv_map.coastlines(resolution='110m')
@@ -488,25 +614,27 @@ def create_figure(include_1979=False):
     gl1.xlocator = mticker.FixedLocator([-180, -90, 0, 90, 180])
 
     levels_icv = np.arange(-0.25, 0.275, 0.025)
-    n_bins_icv = len(levels_icv) - 1
-
-    norm_icv = BoundaryNorm(boundaries=levels_icv, ncolors=n_bins_icv)
+    norm_icv = BoundaryNorm(boundaries=levels_icv, ncolors=len(levels_icv)-1)
     cmap_icv = "RdBu_r"
 
     p_icv = ICV_diff.sel(period="1993-2022", trend_length=30).plot(
-        ax=ax_icv_map,
-        transform=ccrs.PlateCarree(),
-        cmap=cmap_icv,
-        norm=norm_icv,
-        levels=levels_icv,
-        add_colorbar=False
-    )
+                ax=ax_icv_map,
+                transform=ccrs.PlateCarree(),
+                cmap=cmap_icv,
+                norm=norm_icv,
+                levels=levels_icv,
+                add_colorbar=False
+            )
+
+    # ---- add stippling where |MMLE - OBS| > 95% OBS-LPS error ----
+    # Make stipple more distinct: larger size, higher alpha, white edge
+    add_stippling(ax_icv_map, icv_stipple_mask, step=2, size=10, color='k', alpha=0.75)
 
     ax_icv_map.text(-0.12, 1.2, "D", transform=ax_icv_map.transAxes, fontsize=34, fontweight='bold', va='top')
     ax_icv_map.set_title("MMLE - OBS\n(1993-2022)", fontsize=28, pad=10, loc='center')
     ax_icv_map.text(0.95, 1.05, f"{mean_ratio_ICV:.0f}%", fontsize=28, ha='center', va='center',
                     transform=ax_icv_map.transAxes)
-
+    
     cbar_ax_icv = fig.add_axes([0.61, 0.1, 0.25, 0.02])
     cbar_icv = plt.colorbar(
         p_icv,
@@ -520,7 +648,6 @@ def create_figure(include_1979=False):
     cbar_icv.ax.tick_params(direction='out', length=10, width=2)
 
     return fig
-
 # %%
 # Import required libraries for plotting
 import matplotlib.pyplot as plt
@@ -543,8 +670,8 @@ figure_output = '/work/mh0033/m301036/OBS_LPS_revision/docs/Figs/FIG3/'
 os.makedirs(figure_output, exist_ok=True)
 
 for ext in ("png", "pdf"):
-    fig_without_1979.savefig(figure_output + f"FIG3_bias_frac.{ext}", dpi=300, bbox_inches='tight')
-    fig_with_1979.savefig(figure_output + f"FIG3_with_1979_bias_frac.{ext}", dpi=300, bbox_inches='tight')
+    fig_without_1979.savefig(figure_output + f"FIG3_bias_frac_stipple.{ext}", dpi=300, bbox_inches='tight')
+    fig_with_1979.savefig(figure_output + f"FIG3_with_1979_bias_frac_stipple.{ext}", dpi=300, bbox_inches='tight')
 
 plt.show()
 # %%
